@@ -17,7 +17,9 @@
         <tr>
             <td></td>
             <td>{{ $jobQuotation->name}}</td>
-            <td> {{ $jobQuotation->price }} </td>
+            @foreach ($customers as $customer)
+            <td> {{ $customer->name }} </td>
+            @endforeach
         <tr>   
         @endforeach      
     </thead>    

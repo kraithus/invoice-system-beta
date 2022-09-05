@@ -42,6 +42,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Get technicians customers
+     */
+    public function customers()
+    {
+        return $this->hasMany(Customer::class);
+    }
+
+    /**
+     * Get technician
+     */
     public function notifications()
     {
         return $this->hasMany(Notification::class);
@@ -49,7 +60,7 @@ class User extends Authenticatable
 
     public function jobs()
     {
-        return $this->hasMany(Job::class);
+        return $this->hasMany(Job::class, 'technician_id');
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Quotation;
+use App\Models\Customer;
 use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,10 +18,15 @@ class QuotationController extends Controller
     public function index()
     {   
         $user_id = Auth::user()->id;
-        $user = User::find($user_id);
+        $technicianJobs = User::find($user_id)->job;
+
+        foreach ($technicianJobs as $technicianJob) {
+        $customerJob = Job::find($technicianJob->customer_id)->customer;
+        }
 
         return view('quotation.index', [
-            'jobQuotations' => $user->quotations
+            'jobQuotations' => $technicianJobs,
+            'customers' => $customerJob
         ]);
     }
 
