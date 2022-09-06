@@ -17,16 +17,11 @@ class QuotationController extends Controller
      */
     public function index()
     {   
-        $user_id = Auth::user()->id;
-        $technicianJobs = User::find($user_id)->job;
-
-        foreach ($technicianJobs as $technicianJob) {
-        $customerJob = Job::find($technicianJob->customer_id)->customer;
-        }
+        $userID = Auth::user()->id;
+        $technicianJobs = User::find($userID)->jobs;
 
         return view('quotation.index', [
-            'jobQuotations' => $technicianJobs,
-            'customers' => $customerJob
+            'jobs' => $technicianJobs,
         ]);
     }
 

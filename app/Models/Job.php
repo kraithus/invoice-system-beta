@@ -41,7 +41,7 @@ class Job extends Model
      */
     public function quotation()
     {
-        return $this->hasOne(quotation::class);
+        return $this->hasOne(Quotation::class);
     }
 
     /**

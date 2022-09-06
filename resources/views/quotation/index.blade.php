@@ -13,14 +13,19 @@
             <th>Customer Name</th>
             <th>Price</th>
         </tr>   
-        @foreach ($jobQuotations as $jobQuotation)
+        @foreach ($jobs as $job)
         <tr>
+            <td>{{ $job->name }}</td>
+            <td>{{ $job->customer->name }}</td>
+            <td>{{ $job->customer->quotation->price }}</td>
             <td></td>
-            <td>{{ $jobQuotation->name}}</td>
-            @foreach ($customers as $customer)
-            <td> {{ $customer->name }} </td>
-            @endforeach
-        <tr>   
-        @endforeach      
+        @endforeach  
+        
+        
+            <tr>
+                <td></td>
+            </tr>    
+        
+
     </thead>    
 </table>        

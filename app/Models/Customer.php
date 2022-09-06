@@ -28,6 +28,15 @@ class Customer extends Model
     }
 
     /**
+     * Customer has a quotation through a job
+     */
+
+    public function quotation()
+    {
+        return $this->hasOneThrough(Quotation::class, Job::class);
+    }
+
+    /**
      * Customer has many quotations through jobs
      */
     public function quotations()
