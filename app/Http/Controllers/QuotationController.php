@@ -22,6 +22,7 @@ class QuotationController extends Controller
 
         return view('quotation.index', [
             'jobs' => $technicianJobs,
+            'title' => 'Your Quotations'
         ]);
     }
 

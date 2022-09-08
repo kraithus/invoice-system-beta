@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title> {{ $title }} </title>
+	@extends('layouts.css-scripts')
+	<link href="cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+</head>		
 <body>
 	<!---MAIN NAV--->
 	<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
@@ -62,4 +69,7 @@
         
 
     </thead>    
-</table>        
+</table>
+@extends('layouts.js-scripts')        
+<script src="cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+</html>

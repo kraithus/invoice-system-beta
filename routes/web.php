@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DatatablesController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\UserController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +35,14 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+/**
+ * Datatable Routes
+ */
+
+Route::controller(DatatablesController::class)->group(function () {
+    Route::get('datatables.data', 'anyData')->name('datatables.data');
+    Route::get('datatables', 'getIndex');
+});
 
 require __DIR__.'/auth.php';
