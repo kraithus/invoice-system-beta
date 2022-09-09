@@ -38,6 +38,7 @@ Route::get('/', function () {
  */
 Route::controller(TestController::class)->group(function () {
     Route::get('test-datatables', 'dataTables')->name('test-datatables');
+    Route::get('test-quotation-email', 'sendQuotationMail')->name('test-quotation-email');
 });
 
 Route::get('/dashboard', function () {

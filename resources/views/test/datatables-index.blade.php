@@ -23,6 +23,7 @@
                 <th>Job</th>
                 <th>Customer Name</th>
                 <th>Price</th>
+                <th>Email Quotation</th>
             </tr>
         </thead>
         <tbody>

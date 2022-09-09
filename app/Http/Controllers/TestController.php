@@ -20,4 +20,9 @@ class TestController extends Controller
             'title' => 'Test Datatables'
         ]);
     }
+
+    public function sendQuotationMail()
+    {
+        
+    }
 }
