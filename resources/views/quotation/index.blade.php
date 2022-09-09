@@ -3,7 +3,6 @@
 <head>
 	<title> {{ $title }} </title>
 	@extends('layouts.css-scripts')
-	<link href="cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 </head>		
 <body>
 	<!---MAIN NAV--->
@@ -54,6 +53,7 @@
             <th>Customer Name</th>
             <th>Price</th>
         </tr>   
+	</thead> 	
         @foreach ($jobs as $job)
         <tr>
             <td>{{ $job->name }}</td>
@@ -67,9 +67,7 @@
                 <td></td>
             </tr>    
         
-
-    </thead>    
+   
 </table>
 @extends('layouts.js-scripts')        
-<script src="cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 </html>

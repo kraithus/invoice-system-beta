@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\DatatablesController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -30,6 +30,14 @@ Route::resource('user', UserController::class);
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+/**
+ * Test routes
+ * Naming scheme test-'testFeatureName'
+ */
+Route::controller(TestController::class)->group(function () {
+    Route::get('test-datatables', 'dataTables')->name('test-datatables');
 });
 
 Route::get('/dashboard', function () {

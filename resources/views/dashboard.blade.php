@@ -27,6 +27,9 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <a href="quotation">Quotations</a>
                 </div>
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <a href="test-datatables">Quotations Test</a>
+                </div>
             </div>
         </div>
     </div>
