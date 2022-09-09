@@ -36,13 +36,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-/**
- * Datatable Routes
- */
-
-Route::controller(DatatablesController::class)->group(function () {
-    Route::get('datatables.data', 'anyData')->name('datatables.data');
-    Route::get('datatables', 'getIndex');
-});
-
 require __DIR__.'/auth.php';
