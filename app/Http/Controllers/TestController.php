@@ -10,6 +10,7 @@ use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class TestController extends Controller
@@ -55,7 +56,7 @@ class TestController extends Controller
             'jobPrice' => $job->customer->quotation->price
         ];
 
-        $pdf = Pdf::loadView('pdfs.quotation', $data);
-        return $pdf->stream();
+        $pdf = Pdf::loadView('pdfs.quotation', $data)->output();
+        Storage::disk('local')->put('heya.pdf', $pdf);
     }
 }
