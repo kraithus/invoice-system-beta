@@ -32,6 +32,10 @@
             <td>{{ $job->name }}</td>
             <td>{{ $job->customer->name }}</td>
             <td>{{ $job->customer->quotation->price }}</td>
+            <td>
+            <a href="{{ route('test-quotation-email', $job->id) }}"><button>Send</button></a>
+            <a href="{{ route('test-quotation-pdf', $job->id) }}" target="_blank"><button>View PDF</button></a>
+            </td>
         </tr>    
         @endforeach     
         </tbody>
