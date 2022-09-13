@@ -36,7 +36,7 @@ class TestController extends Controller
         $jobName = $job->name;
         $customerEmail = $job->customer->email;
         $customerName = $job->customer->name;
-        $jobPrice = $job->customer->quotation->price;
+        $jobPrice = $job->quotation->price;
 
         Mail::to($customerEmail)->send(new JobQuotation($customerName, $jobName, $jobPrice));
     }
@@ -53,7 +53,7 @@ class TestController extends Controller
             'jobName' => $job->name,
             'customerEmail' => $job->customer->email,
             'customerName' => $job->customer->name,
-            'jobPrice' => $job->customer->quotation->price
+            'jobPrice' => $job->quotation->price
         ];
 
         $pdf = Pdf::loadView('pdfs.quotation', $data)->output();

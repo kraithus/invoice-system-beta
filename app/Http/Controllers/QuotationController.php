@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Quotation;
 use App\Models\Customer;
 use App\Models\Job;
+use App\Models\Quotation;
 use App\Models\User;
 use Illuminate\Http\Request;
 

@@ -58,16 +58,8 @@
         <tr>
             <td>{{ $job->name }}</td>
             <td>{{ $job->customer->name }}</td>
-            <td>{{ $job->customer->quotation->price }}</td>
-            <td></td>
-        @endforeach  
-        
-        
-            <tr>
-                <td></td>
-            </tr>    
-        
-   
+            <td>{{ $job->quotation->price }}</td>
+        @endforeach         
 </table>
 @extends('layouts.js-scripts')        
 </html>
