@@ -15,16 +15,8 @@ class RegionSeeder extends Seeder
      */
     public function run()
     {
-        Region::factory()->create(
-            [
-            'name' => 'North'
-            ],
-            [
-            'name' => 'Central'   
-            ],
-            [
-            'name' => 'South'    
-            ]
-        );
+        Region::factory()->create(['name' => 'North'])
+                         ->create(['name' => 'Central'])
+                         ->create(['name' => 'South']);                   
     }
 }

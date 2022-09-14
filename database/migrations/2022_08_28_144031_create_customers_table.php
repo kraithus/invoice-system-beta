@@ -17,6 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('email', 191)->unique();
             $table->string('name');
+            $table->string('phone', 22);
+            $table->string('organisation', 255);
+            $table->string('address_1', 255);
+            $table->string('address_2', 255)->nullable();
+            $table->foreignId('district_id')->constrained();
             $table->timestamps();
         });
     }
