@@ -344,6 +344,11 @@ button.navbar-toggler {
 .table .thead-dark th{
     background-color: #002B5B;
 }
-.dt_wrapper{
-    margin-bottom: 60px;
+.dataTables_wrapper{
+}
+.dataTables_length{
+
+}
+.dataTables_filter{
+    
 }
