@@ -22,9 +22,9 @@
 	<script>
     $(document).ready( function () {
         $('#customerTable').DataTable();
-        $(".dataTables_wrapper").addClass("row mb-7");
-        $(".dataTables_length").addClass("col-md-6");
-        $(".dataTables_filter").addClass("col-md-6");
+        $(".dataTables_wrapper").addClass("");
+        $(".dataTables_length").addClass("");
+        $(".dataTables_filter").addClass("");
         $(".dataTables_length select").addClass("form-control");
         $(".dataTables_filter input").addClass("form-control")
     } ); 
