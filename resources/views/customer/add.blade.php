@@ -72,7 +72,7 @@
                     <div class="col-md-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><span class="la la-home"></span> Home</a></li>
+                                <li class="breadcrumb-item"><a href="/"><span class="la la-home"></span> Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Add Customer</li>
                             </ol>
                         </nav>
@@ -85,7 +85,7 @@
                             @csrf
                                 <div class="form-row">
                                     <div class="form-group col-md-9">
-                                        <label for="fname" class="all_forms_label"><span class="la la-"></span>Name:</label>
+                                        <label for="name" class="all_forms_label"><span class="la la-"></span>Name:</label>
                                         <input type="text" name="name" class="form-control all_forms" placeholder="Gabriel Munthali">
                                     </div>
                                     <div class="form-group col-md-9">

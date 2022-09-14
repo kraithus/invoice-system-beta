@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Job;
 use App\Models\Customer;
+use App\Models\Job;
+use App\Models\Quotation;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -43,6 +45,7 @@ class JobController extends Controller
         $request->validate([
             'name' => 'required',
             'customer_id' => 'required', 'integer', 'number',
+            'price' => 'required', 'number'
         ]);
 
         $job = new Job;
@@ -55,7 +58,19 @@ class JobController extends Controller
 
         $job->save();
 
-        return redirect()->route('quotation.create')->with('message', 'Job created, set the quotation for this job now');
+        // Get ID of latest Technician job
+        $latestJob = User::find($user_id)->latestJob;
+        $latestJobID = $latestJob->id;
+
+        // Save quotation details
+        $quotation = new Quotation;
+
+        $quotation->job_id = $latestJobID;
+        $quotation->price = $request->price;
+
+        $quotation->save();
+
+        return redirect()->route('dashboard')->with('message', 'Your latest job details have been saved');
     }
 
     /**

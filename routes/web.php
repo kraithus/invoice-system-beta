@@ -8,6 +8,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\QuotationIssuedController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 
@@ -33,10 +34,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('quotation', QuotationController::class);
     Route::resource('user', UserController::class);
 
-    Route::get('/', function () {
-        return view('dashboard');
-    });
-
     /**
      * Test routes
      * Naming scheme test-'testFeatureName'
@@ -48,9 +45,18 @@ Route::middleware(['auth'])->group(function () {
         
         Route::get('test-quotation-pdf/{id}', 'generateQuotationPDF')->name('test-quotation-pdf');
     });
+    /**
+     * Quotation mailing and PDF generation
+     */
+    Route::controller(QuotationIssuedController::class)->group(function () {
+        Route::get('email-quotation/{id}', 'sendQuotationMail')->name('email-quotation');
+        
+        Route::get('quotation-pdf/{id}', 'viewQuotationPDF')->name('quotation-pdf');
+    });
 
     Route::controller(DashboardController::class)->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
+        Route::get('/', 'index');
     });
 });
 

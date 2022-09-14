@@ -16,11 +16,12 @@ class JobQuotation extends Mailable
      *
      * @return void
      */
-    public function __construct($customerName, $jobName, $jobPrice)
+    public function __construct($jobName, $customerName, $jobPrice, $pdfName)
     {
         $this->customerName = $customerName;
         $this->jobName = $jobName;
         $this->jobPrice = $jobPrice;
+        $this->pdfName = $pdfName;
     }
 
     /**
@@ -33,8 +34,12 @@ class JobQuotation extends Mailable
         $customerName = $this->customerName;
         $jobName = $this->jobName;
         $jobPrice = $this->jobPrice;
+        $pdfName = $this->pdfName;
 
         return $this->subject('Job Quotation')
+                    ->attach(public_path('/storage/') . $pdfName, [
+                    'mime' => 'application/pdf',
+                    ])
                     ->markdown('emails.job-quotation', [
                         'customerName' => $customerName,
                         'jobName' => $jobName,
