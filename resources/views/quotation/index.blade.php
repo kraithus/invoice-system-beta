@@ -22,6 +22,11 @@
 	<script>
     $(document).ready( function () {
         $('#customerTable').DataTable();
+        $(".dataTables_wrapper").addClass("row mb-7");
+        $(".dataTables_length").addClass("col-md-6");
+        $(".dataTables_filter").addClass("col-md-6");
+        $(".dataTables_length select").addClass("form-control");
+        $(".dataTables_filter input").addClass("form-control")
     } ); 
     </script>  
     <!---MAIN NAV--->
@@ -81,12 +86,12 @@
 			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<div class="row">
 						<div class="col-md-12">
-						<nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/"><span class="la la-home"></span> Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Your Quotations</li>
-                            </ol>
-                        </nav>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><span class="la la-home"></span> Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Your Quotations</li>
+                                </ol>
+                            </nav>
 						</div>
                         @if(session()->has('message'))
                         <div class="col-md-12">
@@ -97,29 +102,35 @@
                         </div>
                         @endif
 						<div class="col-md-12">
-							<table id="customerTable" class="display table">
-							<thead>
-								<tr>
-									<th>Job</th>
-									<th>Customer Name</th>
-									<th>Price</th>
-									<th>Email Quotation</th>
-								</tr>
-							</thead>
-							<tbody>
-							@foreach ($jobs as $job)
-							<tr>
-								<td>{{ $job->name }}</td>
-								<td>{{ $job->customer->name }}</td>
-								<td>{{ $job->quotation->price }}</td>
-								<td>
-								<a href="{{ route('email-quotation', $job->id) }}"><button>Send Email</button></a>
-								<a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button>View PDF</button></a>
-								</td>
-							</tr>    
-							@endforeach     
-							</tbody>
-							</table>  
+							<div class="box">
+                                <h4 class="block-title">Quotations <span class="la la-th-list"></span></h4>
+                                <div class="title-border"></div>
+                                <div class="table-reponsive">
+                                    <table id="customerTable" class="table table-striped" aria-labelledby="">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th>Job</th>
+                                                <th>Customer Name</th>
+                                                <th>Price</th>
+                                                <th>Email Quotation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach ($jobs as $job)
+                                        <tr>
+                                            <td>{{ $job->name }}</td>
+                                            <td>{{ $job->customer->name }}</td>
+                                            <td>{{ $job->quotation->price }}</td>
+                                            <td>
+                                            <a href="{{ route('email-quotation', $job->id) }}"><button>Send Email</button></a>
+                                            <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button>View PDF</button></a>
+                                            </td>
+                                        </tr>    
+                                        @endforeach     
+                                        </tbody>
+                                    </table>
+                                </div>  
+                            </div>
 						</div>	
 				</div>			
 			</main>
