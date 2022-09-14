@@ -81,17 +81,52 @@
                         <div class="box">
                             <h4 class="block-title">New Customer <span class="la la-plus-circle"></span></h4>
                             <div class="title-border"></div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form action="/customer" method="POST">
                             @csrf
                                 <div class="form-row">
-                                    <div class="form-group col-md-9">
+                                    <div class="form-group col-md-12">
                                         <label for="name" class="all_forms_label"><span class="la la-"></span>Name:</label>
                                         <input type="text" name="name" class="form-control all_forms" placeholder="Gabriel Munthali">
                                     </div>
-                                    <div class="form-group col-md-9">
+                                    <div class="form-group col-md-6">
                                         <label for="email"><span class="la la-"></span>Email:</label>
                                         <input type="email" name="email" class="form-control all_forms"
                                             placeholder="example@email.com">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="phone"><span class="la la-"></span>Phone:</label>
+                                        <input type="tel" name="phone" class="form-control all_forms"
+                                            placeholder="0993996717">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="org" class="all_forms_label"><span class="la la-"></span>Orgnisation:</label>
+                                        <input type="text" name="organisation" class="form-control all_forms" placeholder="Personal, if none">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="adress" class="all_forms_label"><span class="la la-"></span>Address:</label>
+                                        <input type="text" name="address_1" class="form-control all_forms" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="adress" class="all_forms_label"><span class="la la-"></span>Address 2: <sub>(Optional)</sub></label>
+                                        <input type="text" name="address_2" class="form-control all_forms" placeholder="">
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="customer">Select District</label>
+                                        <select class="form-control all_forms" name="district_id">
+                                            <option selected>Choose...</option>
+                                            @foreach ($districts as $district)
+                                                <option value="{{ $district->id}}">{{ $district->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                                 <button class="all_btn" type="submit">Save</button>

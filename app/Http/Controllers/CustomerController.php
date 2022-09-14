@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Customer;
+use App\Models\District;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -22,8 +23,13 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('customer.add');
+    {   
+        $districts = District::all()->sortBy('name');
+
+        $data = [
+            'districts' => $districts
+        ];
+        return view('customer.add', $data);
     }
 
     /**
@@ -37,12 +43,22 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required', 'string', 'max:255',
             'email' => 'required', 'string', 'max:191',
+            'phone' => 'required', 'string', 'max:22',
+            'organisation' => 'required', 'string', 'max:255',
+            'address_1' => 'required', 'string', 'max:255',
+            'address_2' => 'max:255',
+            'district_id' => 'required', 'number',
         ]);
 
         $customer = new Customer;
 
         $customer->name = $request->name;
         $customer->email = $request->email;
+        $customer->phone = $request->phone;
+        $customer->organisation = $request->organisation;
+        $customer->address_1 = $request->address_1;
+        $customer->address_2 = $request->address_2;
+        $customer->district_id = $request->district_id;
 
         $customer->save();
         return redirect()->route('dashboard')->with('message', 'Customer added');
