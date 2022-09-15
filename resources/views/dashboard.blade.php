@@ -29,7 +29,14 @@
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
 					aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="#"><span class="la la-user-edit"></span> Edit Profile</a>
-					<a class="dropdown-item" href="#"><span class="la la-door-open"></span> Log Out</a>
+					<form method="POST" action="{{ route('logout') }}">
+						@csrf
+						<a class="drop-down-item" :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+						</a>
+					</form>
 				</div>
 			</li>
 			<li>
