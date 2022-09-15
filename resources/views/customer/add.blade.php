@@ -95,34 +95,34 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="name" class="all_forms_label"><span class="la la-"></span>Name:</label>
-                                        <input type="text" name="name" class="form-control all_forms" placeholder="Gabriel Munthali">
+                                        <input type="text" name="name" value="{{ old('name') }}" class="form-control all_forms" placeholder="Gabriel Munthali">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="email"><span class="la la-"></span>Email:</label>
-                                        <input type="email" name="email" class="form-control all_forms"
+                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control all_forms"
                                             placeholder="example@email.com">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="phone"><span class="la la-"></span>Phone:</label>
-                                        <input type="tel" name="phone" class="form-control all_forms"
+                                        <input type="tel" name="phone" value="{{ old('phone') }}" class="form-control all_forms"
                                             placeholder="0993996717">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="org" class="all_forms_label"><span class="la la-"></span>Orgnisation:</label>
-                                        <input type="text" name="organisation" class="form-control all_forms" placeholder="Personal, if none">
+                                        <input type="text" name="organisation" value="{{ old('organisation') }}" class="form-control all_forms" placeholder="Personal, if none">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="adress" class="all_forms_label"><span class="la la-"></span>Address:</label>
-                                        <input type="text" name="address_1" class="form-control all_forms" placeholder="">
+                                        <input type="text" name="address_1" value="{{ old('address_1') }}" class="form-control all_forms" placeholder="">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="adress" class="all_forms_label"><span class="la la-"></span>Address 2: <sub>(Optional)</sub></label>
-                                        <input type="text" name="address_2" class="form-control all_forms" placeholder="">
+                                        <input type="text" name="address_2" value="{{ old('address_2') }}" class="form-control all_forms" placeholder="">
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="customer">Select District</label>
                                         <select class="form-control all_forms" name="district_id">
-                                            <option selected>Choose...</option>
+                                            <option selected disabled>Choose...</option>
                                             @foreach ($districts as $district)
                                                 <option value="{{ $district->id}}">{{ $district->name }}</option>
                                             @endforeach
