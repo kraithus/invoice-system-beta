@@ -43,6 +43,14 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get User role
+     */
+    public function role()
+    {
+        return $this->hasOne(Role::class);
+    }
+
+    /**
      * Get technicians customers
      */
     public function customers()
