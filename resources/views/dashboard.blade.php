@@ -40,7 +40,7 @@
 				</div>
 			</li>
 			<li>
-				<a href=""><span class="la la-envelope"><span class="badge badge-light">1</span></span></a>
+				<a href=""><span class="la la-envelope"><span class="badge badge-light">@livewire('unread-notifications-count')</span></span></a>
 			</li>
 			<li>
 				<a href=""><span class="la la-bell-o"><span class="badge badge-light">0</span></span></a>
