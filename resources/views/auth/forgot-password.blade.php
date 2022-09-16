@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="all_btn">Email Password Reset Link</button>
+                        <button type="submit" class="all_btn_reset">Email Password Reset Link</button>
                     </div>
                 </form>
                 </div>

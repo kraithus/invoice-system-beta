@@ -352,3 +352,13 @@ button.navbar-toggler {
 .dataTables_filter{
     
 }
+.all_btn_reset{
+    color: white;
+    height: 40px;
+    width: 200px;
+    background-color: #002B5B;
+    border-color: #002B5B;
+    border-radius: 10px;
+    border: 0;
+    margin-bottom: 30px;
+}
