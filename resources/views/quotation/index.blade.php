@@ -122,8 +122,8 @@
                                             <td>{{ $job->customer->name }}</td>
                                             <td>{{ $job->quotation->price }}</td>
                                             <td>
-                                            <a href="{{ route('email-quotation', $job->id) }}"><button>Send Email</button></a>
-                                            <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button>View PDF</button></a>
+                                            <a href="{{ route('email-quotation', $job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
+                                            <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
                                             </td>
                                         </tr>    
                                         @endforeach     

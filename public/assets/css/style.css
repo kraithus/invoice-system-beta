@@ -362,3 +362,13 @@ button.navbar-toggler {
     border: 0;
     margin-bottom: 30px;
 }
+.all_btn_quote{
+    color: white;
+    height: 40px;
+    width: 100px;
+    background-color: #256D85;
+    border-color: #256D85;
+    border-radius: 10px;
+    border: 0;
+    margin-right: 10px;
+}
