@@ -92,7 +92,7 @@
                                     <div class="form-group col-md-6">
                                         <label for="customer">Select Customer</label>
                                         <select class="form-control all_forms" name="customer_id">
-                                            <option selected>Choose...</option>
+                                            <option selected disabled>Choose...</option>
                                             @foreach ($customers as $customer)
                                                 <option value="{{ $customer->id}}">{{ $customer->name }}</option>
                                             @endforeach

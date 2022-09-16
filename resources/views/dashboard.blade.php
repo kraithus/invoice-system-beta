@@ -109,7 +109,7 @@
 								<span class="la la-th-list mr-4 over_customer" alt="..."></span>
 								<div class="media-body">
 									<h4 class="mt-0"> {{ $quotationNum }}</h4>
-									<h5><a href=""><span class="la la-arrow-right"></span> See more</a></h5>
+									<h5><a href="quotation"><span class="la la-arrow-right"></span> See more</a></h5>
 								</div>
 							</div>
 						</div>
