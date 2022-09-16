@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->text('message');
-            $table->foreignId('controller_id')->nullable()->constrained('users')->nullOnDelete();
-            $table->foreignId('technician_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('controller_id')->constrained('users')->nullOnDelete();
+            $table->foreignId('technician_id')->constrained('users')->nullOnDelete();
+            $table->string('status', 1)->default('0');
             $table->timestamps();
         });
     }

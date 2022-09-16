@@ -18,14 +18,23 @@ class Notification extends Model
         'message',
         'controller_id',
         'technician_id',
+        'status',
     ];
 
     /**
      * Notification was sent by controller X
      */
-    public function user()
+    public function controller()
     {
         return $this->belongsTo(User::class, 'controller_id');
+    }
+
+    /**
+     * Notification was sent to technician X
+     */
+    public function technician()
+    {
+        return $this->belongsTo(User::class, 'technician_id');
     }
 
 }
