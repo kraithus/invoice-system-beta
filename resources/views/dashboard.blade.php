@@ -65,6 +65,9 @@
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="customer/create"><span class="la la-user-plus"></span> Add Customer</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="job/create"><span class="la la-briefcase"></span> New Job</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="quotation"><span class="la la-th-list"></span> Your Quotations</a></li>
+						@if (Auth::user()->role_id == 1)
+						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="notification/create"><span class="la la-th-list"></span> Send Notification</a></li>
+						@endif
 					</ul>
 				</div>
 			</nav>

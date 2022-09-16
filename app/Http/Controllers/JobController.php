@@ -50,16 +50,16 @@ class JobController extends Controller
 
         $job = new Job;
 
-        $user_id = Auth::user()->id;
+        $userID = Auth::user()->id;
 
         $job->name = $request->name;
         $job->customer_id = $request->customer_id;
-        $job->technician_id = $user_id;
+        $job->technician_id = $userID;
 
         $job->save();
 
         // Get ID of latest Technician job
-        $latestJob = User::find($user_id)->latestJob;
+        $latestJob = User::find($userID)->latestJob;
         $latestJobID = $latestJob->id;
 
         // Save quotation details

@@ -1,7 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
+use App\Mail\NotificationDelivery;
 use App\Models\Notification;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -12,8 +16,9 @@ class NotificationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $userID = Auth::user()->id;
+        $notifications = Notification::where('technician_id', $userID);
     }
 
     /**
@@ -23,7 +28,11 @@ class NotificationController extends Controller
      */
     public function create()
     {
-        //
+        //Get technician list
+        $technicians = User::where('role_id', 2)->get(); // 2 is the id for role Technician
+        return view('notification.add', [
+            'technicians' => $technicians
+        ]);
     }
 
     /**
@@ -43,8 +52,21 @@ class NotificationController extends Controller
 
         $notification->message = $request->message;
         $notification->technician_id = $request->technician_id;
+        $notification->controller_id = Auth::user()->id;
 
         $notification->save();
+
+        // Get technician email
+        $userID = $request->technician_id;
+        $user = User::find($userID);
+        $userEmail = $user->email;
+
+        // Send an email to technician
+        $message = $request->message;
+
+        Mail::to($userEmail)->send(new NotificationDelivery($message));
+
+        return redirect()->route('dashboard')->with('message', 'Notification Sent! Have a good day');
     }
 
     /**
