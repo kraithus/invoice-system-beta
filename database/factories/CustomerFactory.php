@@ -17,7 +17,12 @@ class CustomerFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'phone' => fake()->phoneNumber(),
+            'organisation' => fake()->company(),
+            'address_1' => fake()->streetAddress(),
+            'district_id' => 6
         ];
     }
 }

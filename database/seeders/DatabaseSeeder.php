@@ -13,12 +13,19 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        /**
+         * Leave only role, user, region, district uncommented in production
+         * Ordered by hierarchy of execution based on table relationship dependencies
+         */
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
             RegionSeeder::class,
             DistrictSeeder::class,
+            CustomerSeeder::class,
+            JobSeeder::class,
+            QuotationSeeder::class
         ]);
     }
 }

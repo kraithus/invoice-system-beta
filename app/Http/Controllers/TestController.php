@@ -71,7 +71,7 @@ class TestController extends Controller
         /**
          * Query the data
          */
-        $todayJobs = Job::where('created_at', today())->count();
+        $todayJobs = Job::where('created_at', '>=', today())->count();
         $yesterdayJobs = Job::where('created_at', today()->subDays(1))->count();
         $jobs2DaysAgo = Job::where('created_at', today()->subDays(2))->count();
 
@@ -81,5 +81,7 @@ class TestController extends Controller
         $chart = new WeeklyJobs;
         $chart->labels=(['2 Days ago', 'Yesterday', 'Today']);
         $chart->dataset('My dataset', 'line', [$jobs2DaysAgo, $yesterdayJobs, $todayJobs]);
+
+        return view('test.chart', compact('chart'));
     }
 }

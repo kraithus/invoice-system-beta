@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/fa/css/all.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/la/css/line-awesome.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
 </head>
 
 <body>
@@ -85,48 +86,15 @@
 					</div>
 					@endif
 					<div class="col-md-4">
-						<div class="box">
-							<h4 class="block-title">I see<span class="la la-group"></span></h4>
-							<div class="title-border"></div>
-							<div class="media">
-								<span class="la la-group mr-4 over_customer" alt="..."></span>
-								<div class="media-body">
-									<h4 class="mt-0">  </h4>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="box">
-							<h4 class="block-title">We have<span class="la la-th-list"></span></h4>
-							<div class="title-border"></div>
-							<div class="media">
-								<span class="la la-th-list mr-4 over_customer" alt="..."></span>
-								<div class="media-body">
-									<h4 class="mt-0">  </h4>
-									<h5><a href="quotation"><span class="la la-arrow-right"></span> See more</a></h5>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4">
-						<div class="box">
-							<h4 class="block-title">Space<span class="la la-briefcase"></span></h4>
-							<div class="title-border"></div>
-							<div class="media">
-								<span class="la la-briefcase mr-4 over_customer" alt="..."></span>
-								<div class="media-body">
-									<h4 class="mt-0"></h4>
-								</div>
-							</div>
-						</div>
-					</div>
+						{!! $chart->container() !!}
+					</div>	
 					
 				</div>
 			</main>
 		</div>
 	</div>
 
+	{!! $chart->script() !!}
 	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/js/popper.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
