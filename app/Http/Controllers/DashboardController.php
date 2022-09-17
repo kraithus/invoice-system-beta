@@ -16,20 +16,23 @@ class DashboardController extends Controller
         $role_id = Auth::user()->role_id;
         if ($role_id == 1)
         {
-            redirect('cpanel');
+            return redirect()->route('cpanel');
         }
 
-        $technicianID = Auth::user()->id;
-        $countCustomers = Job::where('technician_id', $technicianID)->distinct()->count('customer_id');
-        $countJobs = Job::where('technician_id', $technicianID)->count();
-        $countQuotations = User::find($technicianID)->quotations->count();
+        else {
 
-        $data = [
-            'customerNum' => $countCustomers,
-            'jobNum' => $countJobs,
-            'quotationNum' => $countQuotations
-        ];
+            $technicianID = Auth::user()->id;
+            $countCustomers = Job::where('technician_id', $technicianID)->distinct()->count('customer_id');
+            $countJobs = Job::where('technician_id', $technicianID)->count();
+            $countQuotations = User::find($technicianID)->quotations->count();
 
-        return view('dashboard', $data);
+            $data = [
+                'customerNum' => $countCustomers,
+                'jobNum' => $countJobs,
+                'quotationNum' => $countQuotations
+            ];
+
+            return view('dashboard', $data);
+        }
     }
 }

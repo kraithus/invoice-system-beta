@@ -16,8 +16,9 @@ class NotificationDelivery extends Mailable
      *
      * @return void
      */
-    public function __construct($message)
-    {
+    public function __construct($subject, $message)
+    {   
+        $this->subject = $subject;
         $this->message = $message;
     }
 
@@ -27,10 +28,12 @@ class NotificationDelivery extends Mailable
      * @return $this
      */
     public function build()
-    {
+    {   
+        $subject = $this->subject;    
         $message = $this->message;    
-        return $this->subject('New Notification')
+        return $this->subject($subject)
                       ->markdown('emails.notification', [
+                          'subject' => $subject,
                           'message' => $message
                       ]);  
     }

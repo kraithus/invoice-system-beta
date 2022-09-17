@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use App\Mail\NotificationDelivery;
 use App\Models\Notification;
 use App\Models\User;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class NotificationController extends Controller
 {
@@ -16,14 +17,18 @@ class NotificationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {   
         $userID = Auth::user()->id;
+
         $notifications = Notification::where('technician_id', $userID)->get();
 
-        return view('notification.index', [
+        $data = [
             'notifications' => $notifications
-        ]);
+        ];
+
+        return view('notification.index', $data);
     }
 
     /**
@@ -49,13 +54,15 @@ class NotificationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'message' => 'required',
+            'title' => 'required', 'maX:255',
+            'body' => 'required',
             'technician_id' => 'required', 'integer', 'number',
         ]);
 
         $notification = new Notification;
 
-        $notification->message = $request->message;
+        $notification->title = $request->title;
+        $notification->body = $request->body;
         $notification->technician_id = $request->technician_id;
         $notification->controller_id = Auth::user()->id;
 
@@ -67,11 +74,12 @@ class NotificationController extends Controller
         $userEmail = $user->email;
 
         // Send an email to technician
-        $message = $request->message;
+        $subject = $request->title;
+        $message = $request->body;
 
-        Mail::to($userEmail)->send(new NotificationDelivery($message));
+        Mail::to($userEmail)->send(new NotificationDelivery($subject, $message));
 
-        return redirect()->route('dashboard')->with('message', 'Notification Sent! Have a good day');
+        return redirect()->route('cpanel')->with('message', 'Notification Sent! Have a good day');
     }
 
     /**

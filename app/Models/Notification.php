@@ -15,6 +15,7 @@ class Notification extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'title',
         'message',
         'controller_id',
         'technician_id',

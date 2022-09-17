@@ -77,6 +77,14 @@
                             </ol>
                         </nav>
                     </div>
+                    @if(session()->has('message'))
+					<div class="col-md-12">
+						<div class="alert alert-success alert-dismissible fade show" role="alert">
+							{{ session()->get('message') }}
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						  </div>
+					</div>
+					@endif
                     <div class="col-md-12">
                         <div class="box">
                             <h4 class="block-title">Notifications <span class="la la-eye"></span></h4>
@@ -87,7 +95,7 @@
                                     <div class="note_body">
                                         <h4 data-toggle="collapse" data-target="#noteCollapse{{ $notification->id }}" aria-expanded="false"
                                             aria-controls="collapseExample">
-                                            Notification title
+                                            {{ $notification->title }}
                                         </h4>
                                         <div class="collapse" id="noteCollapse{{ $notification->id }}">
                                             <div class="box note_box">

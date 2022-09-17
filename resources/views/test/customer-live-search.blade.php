@@ -1,0 +1,1 @@
+@livewire('customer-search-bar')

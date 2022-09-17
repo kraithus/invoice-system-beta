@@ -1,7 +1,8 @@
 @component('mail::message')
-# Notification sent
+# {{ $subject }}
  
-Your controller sent a message saying: "{{ $message }}"
+Your controller sent a message saying: 
+"{{ $message }}"
  
 @component('mail::button', ['url' => 'notification'])
 View Notifcation on Website

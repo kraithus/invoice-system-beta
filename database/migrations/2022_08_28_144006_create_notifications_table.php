@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->text('message');
+            $table->string('title', 255);
+            $table->text('body');
             $table->foreignId('controller_id')->constrained('users');
             $table->foreignId('technician_id')->constrained('users');
             $table->string('status', 1)->default('0');

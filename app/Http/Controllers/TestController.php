@@ -59,4 +59,9 @@ class TestController extends Controller
         $pdf = Pdf::loadView('pdfs.quotation', $data)->output();
         Storage::disk('local')->put('heya.pdf', $pdf);
     }
+
+    public function showCustomers()
+    {
+        return view('test.customer-live-search');
+    }
 }
