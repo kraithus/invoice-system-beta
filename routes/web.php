@@ -48,6 +48,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('test-quotation-email/{id}', 'sendQuotationMail')->name('test-quotation-email');
         
         Route::get('test-quotation-pdf/{id}', 'generateQuotationPDF')->name('test-quotation-pdf');
+
+        Route::get('weekly-chart', 'chartTest')->name('weekly-chart');
     });
     /**
      * Quotation mailing and PDF generation
