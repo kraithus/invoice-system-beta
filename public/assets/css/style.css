@@ -372,3 +372,22 @@ button.navbar-toggler {
     border: 0;
     margin-right: 10px;
 }
+ul.note_list{
+    padding: 0;
+    margin: 0;
+}
+.note_list{
+    list-style-type: none;
+}
+.note_body{
+    margin-bottom: 30px;
+    border-bottom: 2px solid #ebf1f8;
+    padding: 15px 0px;
+}
+.note_body h4{
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.note_box{
+    background-color: #ebf1f8;
+}
