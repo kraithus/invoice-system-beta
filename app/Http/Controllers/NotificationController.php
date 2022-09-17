@@ -19,7 +19,11 @@ class NotificationController extends Controller
     public function index()
     {   
         $userID = Auth::user()->id;
-        $notifications = Notification::where('technician_id', $userID);
+        $notifications = Notification::where('technician_id', $userID)->get();
+
+        return view('notification.index', [
+            'notifications' => $notifications
+        ]);
     }
 
     /**

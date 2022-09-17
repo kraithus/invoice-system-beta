@@ -13,6 +13,11 @@ class DashboardController extends Controller
 {
     public function index()
     {   
+        $role_id = Auth::user()->role_id;
+        if ($role_id == 1)
+        {
+            redirect('cpanel');
+        }
 
         $technicianID = Auth::user()->id;
         $countCustomers = Job::where('technician_id', $technicianID)->distinct()->count('customer_id');

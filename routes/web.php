@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
@@ -11,6 +12,9 @@ use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationIssuedController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\EnsureHasRole;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -58,6 +62,15 @@ Route::middleware(['auth'])->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
         Route::get('/', 'index');
     });
+
+    /**
+     * Is Admin middleware
+     */
+        Route::middleware(['is.admin'])->group(function () {
+            Route::controller(AdminController::class)->group(function () {
+                Route::get('cpanel', 'index')->name('cpanel');
+            });
+        });
 });
 
 require __DIR__.'/auth.php';

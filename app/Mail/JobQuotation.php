@@ -37,7 +37,7 @@ class JobQuotation extends Mailable
         $pdfName = $this->pdfName;
 
         return $this->subject('Job Quotation')
-                    ->attach(public_path('\\storage\\') . $pdfName, [
+                    ->attach(public_path('/storage/') . $pdfName, [
                     'mime' => 'application/pdf',
                     ])
                     ->markdown('emails.job-quotation', [

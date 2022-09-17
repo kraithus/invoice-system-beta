@@ -47,12 +47,9 @@
                     <a class="dropdown-item" href="#"><span class="la la-door-open"></span> Log Out</a>
                 </div>
             </li>
-            <li>
-                <a href=""><span class="la la-envelope"><span class="badge badge-light">1</span></span></a>
-            </li>
-            <li>
-                <a href=""><span class="la la-bell-o"><span class="badge badge-light">0</span></span></a>
-            </li>
+			<li>
+				<a href=""><span class="la la-envelope"><span class="badge badge-light">@livewire('unread-notifications-count')</span></span></a>
+			</li>
 
         </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarMenu"
@@ -71,11 +68,11 @@
                     <ul class="side_nav list-unstyled flex-column px-3 pt-2 pb-4">
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/dashboard"><span
                                     class="la la-home"></span> Home</a></li>
-                        <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="/customer/create"><span
+                        <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/customer/create"><span
                                     class="la la-user-plus"></span> Add Customer</a></li>
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/job/create"><span
                                     class="la la-briefcase"></span> New Job</a></li>
-                        <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/quotation"><span
+                        <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="/quotation"><span
                                     class="la la-th-list"></span> Quotations</a></li>
                     </ul>
                 </div>

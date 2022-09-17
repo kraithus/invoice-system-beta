@@ -32,13 +32,9 @@
                     <a class="dropdown-item" href="#"><span class="la la-door-open"></span> Log Out</a>
                 </div>
             </li>
-            <li>
-                <a href=""><span class="la la-envelope"><span class="badge badge-light">1</span></span></a>
-            </li>
-            <li>
-                <a href=""><span class="la la-bell-o"><span class="badge badge-light">0</span></span></a>
-            </li>
-
+			<li>
+				<a href=""><span class="la la-envelope"><span class="badge badge-light">@livewire('unread-notifications-count')</span></span></a>
+			</li>
         </ul>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarMenu"
             aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +50,7 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" aria-label="">
                 <div class="sidebar-sticky pt-3">
                     <ul class="side_nav list-unstyled flex-column px-3 pt-2 pb-4">
-                        <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/"><span
+                        <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/dashboard"><span
                                     class="la la-home"></span> Home</a></li>
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/customer/create"><span
                                     class="la la-user-plus"></span> Add Customer</a></li>
@@ -73,7 +69,7 @@
                     <div class="col-md-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#"><span class="la la-home"></span> Home</a></li>
+                                <li class="breadcrumb-item"><a href="/dashboard"><span class="la la-home"></span> Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">New Job</li>
                             </ol>
                         </nav>
