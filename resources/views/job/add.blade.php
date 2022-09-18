@@ -10,9 +10,22 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/fa/css/all.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/la/css/line-awesome.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- Include the plugin's CSS and JS: -->
+    <script type="text/javascript" src="{{ asset('bootstrap-multiselect/js/bootstrap-multiselect.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bootstrap-multiselect/css/bootstrap-multiselect.css') }}" type="text/css"/>
 </head>
 
 <body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#customerSearch').multiselect({
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true
+        });
+    });
+</script>
     <!---MAIN NAV--->
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
         <a class="navbar-brand" href="#">
@@ -24,7 +37,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <img src="imgs/usr.png" width="25" height="25" class="rounded-circle" alt="">
+                    <img src="{{ asset('assets/images/user-icon.png') }}" width="25" height="25" class="rounded-circle" alt="">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
                     aria-labelledby="navbarDropdownMenuLink">
@@ -87,7 +100,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="customer">Select Customer</label>
-                                        <select class="form-control all_forms" name="customer_id">
+                                        <select id="customerSearch" class="form-control all_forms" name="customer_id">
                                             <option selected disabled>Choose...</option>
                                             @foreach ($customers as $customer)
                                                 <option value="{{ $customer->id}}">{{ $customer->name }}</option>
@@ -109,7 +122,6 @@
         </div>
     </div>
 
-	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/js/popper.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 </body>

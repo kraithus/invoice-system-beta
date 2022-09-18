@@ -23,7 +23,7 @@
             <li class="dropdown">
                 <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    <img src="imgs/usr.png" width="25" height="25" class="rounded-circle" alt="">
+                    <img src="{{ asset('assets/images/user-icon.png') }}" width="25" height="25" class="rounded-circle" alt="">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
                     aria-labelledby="navbarDropdownMenuLink">
