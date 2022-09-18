@@ -16,15 +16,21 @@ class AdminController extends Controller
          * Query the data
          */
         $todayJobs = Job::where('created_at', '>=', today())->count();
-        $yesterdayJobs = Job::where('created_at', today()->subDays(1))->count();
-        $jobs2DaysAgo = Job::where('created_at', today()->subDays(2))->count();
+        $yesterdayJobs = Job::where('created_at', '>=', today()->subDays(1))->where('created_at', '<', today())->count();
+        $jobs2DaysAgo = Job::where('created_at', '>=', today()->subDays(2))->where('created_at', '<', today()->subDays(1))->count();
 
         /**
          * Instance of chart
          */
         $chart = new WeeklyJobs;
         $chart->labels=(['2 Days ago', 'Yesterday', 'Today']);
-        $chart->dataset('My dataset', 'line', [$jobs2DaysAgo, $yesterdayJobs, $todayJobs]);
+        $chart->dataset('Jobs this week', 'line', [$jobs2DaysAgo, $yesterdayJobs, $todayJobs])->options([
+            ['scales' => 
+                ['y' => 
+                    ['ticks' => 'stepSize: 1']
+                ]    
+            ]
+        ]);
 
         return view('admin.index', compact('chart'));
     }    
