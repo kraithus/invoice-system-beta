@@ -25,11 +25,18 @@
                     aria-haspopup="true" aria-expanded="false">
                     <img src="{{ asset('assets/images/user-icon.png') }}" width="25" height="25" class="rounded-circle" alt="">
                 </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
-                    aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#"><span class="la la-user-edit"></span> Edit Profile</a>
-                    <a class="dropdown-item" href="#"><span class="la la-door-open"></span> Log Out</a>
-                </div>
+				<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
+					aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="#"><span class="la la-user-edit"></span> Edit Profile</a>
+					<form style="cursor: pointer" method="POST" action="{{ route('logout') }}">
+						@csrf
+						<a class="dropdown-item" :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                Log Out
+						</a>
+					</form>
+				</div>
             </li>
 			<li>
 				<a href=""><span class="la la-envelope"><span class="badge badge-light">@livewire('unread-notifications-count')</span></span></a>

@@ -39,11 +39,18 @@
                     aria-haspopup="true" aria-expanded="false">
                     <img src="{{ asset('assets/images/user-icon.png') }}" width="25" height="25" class="rounded-circle" alt="">
                 </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
-                    aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#"><span class="la la-user-edit"></span> Edit Profile</a>
-                    <a class="dropdown-item" href="#"><span class="la la-door-open"></span> Log Out</a>
-                </div>
+				<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
+					aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="#"><span class="la la-user-edit"></span> Edit Profile</a>
+					<form style="cursor: pointer" method="POST" action="{{ route('logout') }}">
+						@csrf
+						<a class="dropdown-item" :href="route('logout')"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                Log Out
+						</a>
+					</form>
+				</div>
             </li>
 			<li>
 				<a href=""><span class="la la-envelope"><span class="badge badge-light">@livewire('unread-notifications-count')</span></span></a>
@@ -91,12 +98,21 @@
                         <div class="box">
                             <h4 class="block-title">New Job <span class="la la-plus-circle"></span></h4>
                             <div class="title-border"></div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form action="/job" method="POST" class="col-md-9">
                             @csrf    
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="name" class="all_forms_label"><span class="la la-"></span>Job Name:</label>
-                                        <input type="text" class="form-control all_forms" name="name" placeholder="Consultancy">
+                                        <input type="text" class="form-control all_forms" name="name" placeholder="Consultancy" value="{{ old('name') }}">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="customer">Select Customer</label>
@@ -109,7 +125,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="price"><span class="la la-"></span>Price:</label>
-                                        <input class="form-control all_forms" type="number" name="price">
+                                        <input class="form-control all_forms" type="number" name="price" value="{{ old('price') }}">
                                     </div>
                                 </div>
                                 <button class="all_btn" type="submit">Save</button>

@@ -1,99 +1,302 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+
+<html>
 
 <head>
-    <title>iquote | Quotation</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Scripts -->
-	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/fa/css/all.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/la/css/line-awesome.min.css') }}">
-	<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+    <title>Receipt</title>
+
 </head>
 
+<style type="text/css">
+
+    body{
+
+        font-family: 'Roboto Condensed', sans-serif;
+
+    }
+
+    .m-0{
+
+        margin: 0px;
+
+    }
+
+    .p-0{
+
+        padding: 0px;
+
+    }
+
+    .pt-5{
+
+        padding-top:5px;
+
+    }
+
+    .mt-10{
+
+        margin-top:10px;
+
+    }
+
+    .text-center{
+
+        text-align:center !important;
+
+    }
+
+    .w-100{
+
+        width: 100%;
+
+    }
+
+    .w-50{
+
+        width:50%;   
+
+    }
+
+    .w-85{
+
+        width:85%;   
+
+    }
+
+    .w-15{
+
+        width:15%;   
+
+    }
+
+    .logo img{
+
+        width:45px;
+
+        height:45px;
+
+        padding-top:30px;
+
+    }
+
+    .logo span{
+
+        margin-left:8px;
+
+        top:19px;
+
+        position: absolute;
+
+        font-weight: bold;
+
+        font-size:25px;
+
+    }
+
+    .gray-color{
+
+        color:#5D5D5D;
+
+    }
+
+    .text-bold{
+
+        font-weight: bold;
+
+    }
+
+    .border{
+
+        border:1px solid black;
+
+    }
+
+    table tr,th,td{
+
+        border: 1px solid #d2d2d2;
+
+        border-collapse:collapse;
+
+        padding:7px 8px;
+
+    }
+
+    table tr th{
+
+        background: #F4F4F4;
+
+        font-size:15px;
+
+    }
+
+    table tr td{
+
+        font-size:13px;
+
+    }
+
+    table{
+
+        border-collapse:collapse;
+
+    }
+
+    .box-text p{
+
+        line-height:10px;
+
+    }
+
+    .float-left{
+
+        float:left;
+
+    }
+
+    .total-part{
+
+        font-size:16px;
+
+        line-height:12px;
+
+    }
+
+    .total-right p{
+
+        padding-right:20px;
+
+    }
+
+</style>
+
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h4 class="text-center text-uppercase font-weight-bold mt-5 mb-5">Quotation</h4>
-            </div>
-            <div class="col-md-12 mb-4">
-                <ul class="qt_list">
-                    <li><span class="font-weight-bold">Order Number :</span> 63633737</li>
-                    <li><span class="font-weight-bold">Order Date :</span> 17 Sept 2022</li>
-                </ul>
-            </div>
-            <div class="col-md-12">
-                <table class="table table-bordered" aria-describedby="">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">From:</th>
-                            <th scope="col">To</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div>
-                                    <ul class="client_addy list-unstyled">
-                                        <li><span class="la la-user"></span> Gabriel Munthali</li>
-                                        <li><span class="la la-building"></span> MassPlug Magazine</li>
-                                        <li><span class="la la-address-card"></span> P.O Box 000</li>
-                                        <li><span class="la la-city"></span> Mzuzu</li>
-                                        <li><span class="la la-phone"></span> 0993 996 717</li>
-                                        <li><span class="la la-envelope"></span> gabmunthali@gmail.com</li>
-                                    </ul>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <ul class="client_addy list-unstyled">
-                                        <li><span class="la la-user"></span> {{ $customerName }}</li>
-                                        <li><span class="la la-building"></span> MassPlug Magazine</li>
-                                        <li><span class="la la-address-card"></span> P.O Box 000</li>
-                                        <li><span class="la la-city"></span> Mzuzu</li>
-                                        <li><span class="la la-phone"></span> 0993 996 717</li>
-                                        <li><span class="la la-envelope"></span> gabmunthali@gmail.com</li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <table class="table table-bordered" aria-describedby="">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <h4 class="font-weight-bold table_h">Product name</h4>
-                            </td>
-                            <td>
-                                <h4 class="table_h">Web application</h4>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h4 class="font-weight-bold table_h">Duration</h4>
-                            </td>
-                            <td>
-                                <h4 class="table_h">3 weeks</h4>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-md-12 mb-4">
-                <ul class="qt_list float-right">
-                    <li><span class="font-weight-bold">Subtotal :</span> k100, 00</li>
-                    <li><span class="font-weight-bold">Total Amount :</span> 17 Sept 2022</li>
-                </ul>
-            </div>
-        </div>
+
+<div class="head-title">
+    <h1 class="text-center m-0 p-0">Quotation</h1>
+
+</div>
+
+<div class="add-detail mt-10">
+
+    <div class="w-50 float-left mt-10">
+
+        <p class="m-0 pt-5 text-bold w-100">Order No: - <span class="gray-color"></span></p>
+
+        <p class="m-0 pt-5 text-bold w-100">Job Date - <span class="gray-color"></span></p>
+
     </div>
 
-	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-	<script src="{{ asset('assets/js/popper.min.js') }}"></script>
-	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-</body>
+    <div class="w-50 float-left logo mt-10">
+
+        <img width="200" height="200" src="">     
+
+    </div>
+
+    <div style="clear: both;"></div>
+
+</div>
+
+<div class="table-section bill-tbl w-100 mt-10">
+
+    <table class="table w-100 mt-10">
+
+        <tr>
+
+            <th class="w-50">From</th>
+
+            <th class="w-50">To</th>
+
+        </tr>
+
+        <tr>
+
+            <td>
+
+                <div class="box-text">
+
+                    <p>iQuoteYou</p>
+
+                    <p>P.O. Box 265,</p>
+
+                    <p>Chichiri Blantyre 265</p>
+
+                    <p>Contact : +265 888 000 111</p>
+
+                </div>
+
+            </td>
+
+            <td>
+
+                <div class="box-text">
+
+                    <p>{{ $customerName }}</p>
+
+                    <p>{{ $customerDistrict }}</p>
+
+                    <p>{{ $customerAddress }}</p>
+
+                    <p>Contact : {{ $customerPhone }}</p>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+<div class="table-section bill-tbl w-100 mt-10">
+
+    <table class="table w-100 mt-10">
+
+        <tr>
+
+            <td><b>Job Name</b></td>
+
+            <td>{{ $jobName }}</td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+<div class="table-section bill-tbl w-100 mt-10">
+
+    <table class="table w-100 mt-10">
+
+        <tr>
+
+            <td colspan="7">
+
+                <div class="total-part">
+
+                    <div class="total-left w-85 float-left" align="right">
+
+                        
+
+                    </div>
+
+                    <div class="total-right w-15 float-left text-bold" align="right">
+
+                        <p>MWK{{ number_format($jobPrice) }}</p>
+
+                    </div>
+
+                    <div style="clear: both;"></div>
+
+                </div> 
+
+            </td>
+
+        </tr>
+
+    </table>
+
+</div>
 
 </html>

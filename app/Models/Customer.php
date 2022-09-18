@@ -48,4 +48,12 @@ class Customer extends Model
     {
         return $this->hasManyThrough(Quotation::class, Job::class);
     }   
+
+    /**
+     * Customer stays in a district
+     */
+    public function district()
+    {
+        return $this->belongsTo(District::class);
+    }
 }

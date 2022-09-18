@@ -16,4 +16,12 @@ class District extends Model
     {
         return $this->belongsTo(Region::class);
     }
+
+    /**
+     * Many customers reside in a district
+     */
+    public function customers()
+    {
+        return $this->hasMany(Customer::class);
+    }
 }
