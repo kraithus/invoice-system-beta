@@ -10,9 +10,22 @@
 	<link rel="stylesheet" href="{{ asset('assets/css/fa/css/all.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/la/css/line-awesome.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <!-- Include the plugin's CSS and JS: -->
+    <script type="text/javascript" src="{{ asset('bootstrap-multiselect/js/bootstrap-multiselect.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bootstrap-multiselect/css/bootstrap-multiselect.css') }}" type="text/css"/>
 </head>
 
 <body>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#technicianSearch').multiselect({
+            enableFiltering: true,
+            enableCaseInsensitiveFiltering: true
+        });
+    });
+</script>    
     <!---MAIN NAV--->
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" aria-labelledby="">
         <a class="navbar-brand" href="#">
@@ -89,7 +102,7 @@
                             <form action="/notification" method="POST" class="col-md-10">
                                 @csrf
                                 <label for="to">Select Recipient:</label>
-                                <select class="form-control all_forms" name="technician_id">
+                                <select id="technicianSearch" class="form-control all_forms" name="technician_id">
                                             <option selected disabled>Choose...</option>
                                             @foreach ($technicians as $technician)
                                                 <option value="{{ $technician->id}}">{{ $technician->name }}</option>
@@ -101,12 +114,9 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="body">Body:</label>
-                                    <textarea class="form-control all_forms" name="body" cols="30" rows="10">{{ old('body') }}</textarea>
+                                    <textarea name="body" class="form-control all_forms" name="body" cols="30" rows="10">{{ old('body') }}</textarea>
                                 </div>
-                                <button wire:click="send-email" class="all_btn" type="submit">Send</button>
-                                <div wire:loading wire:target="send-email">
-                                    Sending Notification Email
-                                </div>    
+                                <button class="all_btn" type="submit">Send</button> 
                             </form>
                         </div>
                     </div>
@@ -115,7 +125,6 @@
         </div>
     </div>
 
-	<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('assets/js/popper.min.js') }}"></script>
 	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 </body>

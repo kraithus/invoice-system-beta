@@ -99,7 +99,7 @@
                                         </h4>
                                         <div class="collapse" id="noteCollapse{{ $notification->id }}">
                                             <div class="box note_box">
-                                                {{ $notification->message }}.
+                                                {{ $notification->body }}.
                                             </div>
                                         </div>
                                     </div>

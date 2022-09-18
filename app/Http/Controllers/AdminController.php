@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Charts\WeeklyJobs;
 use App\Charts\WeeklyRevenue;
 use App\Models\Job;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -34,4 +36,64 @@ class AdminController extends Controller
 
         return view('admin.index', compact('chart'));
     }    
+
+    public function jobsDone()
+    {   
+        // Get all jobs
+        $data = [
+            'jobs' => Job::all(),
+            'title' => 'Jobs Done'
+        ];    
+
+        // Load view with jobs data
+        return view('admin.jobs-index', $data);
+    }
+
+    public function dataExport()
+    {   
+        $from = date('Y-01-01');
+        $to = date('Y-m-d');
+        $period = CarbonPeriod::create($from, '1 month', $to);
+
+        $data = [
+            'title' => 'Export Tables',
+            'period' => $period
+        ];
+
+        return view('admin.export-data', $data);
+    }
+
+    /**
+     * Send chosen month for report generation.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function monthlyJobsTable(Request $request)
+    {   
+        $request->validate([
+            'month' => 'required', 'number'
+        ]);
+
+        $year = date('Y');
+        $month = $request->month;
+        $yearMonth = $year . '-' . $month;
+
+        $jobs = Job::where('created_at', 'LIKE',  $yearMonth . '%')->get();
+
+        $monthString = Carbon::create($yearMonth . '-01');
+
+        $monthName = $monthString->format('F');
+
+        $title = 'Job Report for ' . $monthName . ' of ' . $year; 
+
+        $data = [
+            'title' => $title,
+            'year' => $year,
+            'month' => $month,
+            'jobs' => $jobs,
+        ];
+
+        return view('admin.table-template', $data);
+    }
 }

@@ -62,6 +62,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::controller(DashboardController::class)->group(function () {
         Route::get('dashboard', 'index')->name('dashboard');
+        
         Route::get('/', 'index');
     });
 
@@ -71,6 +72,12 @@ Route::middleware(['auth'])->group(function () {
         Route::middleware(['is.admin'])->group(function () {
             Route::controller(AdminController::class)->group(function () {
                 Route::get('cpanel', 'index')->name('cpanel');
+
+                Route::get('jobs-done', 'jobsDone')->name('jobs-done');
+
+                Route::get('export-data', 'dataExport')->name('export-data');
+
+                Route::post('monthly-jobs-table', 'monthlyJobsTable')->name('monthly-jobs-table');
             });
         });
 });
