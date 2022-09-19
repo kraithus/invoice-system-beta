@@ -27,7 +27,7 @@
     });
 </script>
     <!---MAIN NAV--->
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" aria-labelledby="">
         <a class="navbar-brand" href="#">
             <h2>ORG</h2>
         </a>

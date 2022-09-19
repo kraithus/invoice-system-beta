@@ -86,7 +86,13 @@
 					</div>
 					@endif
 					<div class="col-md-4">
-						{!! $chart->container() !!}
+						<div class="box">
+							<h4 class="block-title">Jobs <span class="la la-briefcase"></span></h4>
+						<div class="title-border"></div>
+							<div>
+								{!! $chart->container() !!}
+							</div>
+						</div>
 					</div>	
 					
 				</div>
