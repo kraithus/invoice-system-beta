@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Models\Customer;
+use App\Models\District;
+use App\Models\Job;
 use App\Mail\JobQuotation;
 use App\Models\Quotation;
-use App\Models\Customer;
-use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -44,6 +45,10 @@ class QuotationIssuedController extends Controller
             'jobName' => $job->name,
             'customerEmail' => $job->customer->email,
             'customerName' => $job->customer->name,
+            'customerPhone' => $job->customer->phone,
+            'customerOrganisation' => $job->customer->organisation,
+            'customerAddress' => $job->customer->address_1,
+            'customerDistrict' => $job->customer->district->name,
             'jobPrice' => $job->quotation->price
         ];
 
@@ -68,10 +73,14 @@ class QuotationIssuedController extends Controller
             'jobName' => $job->name,
             'customerEmail' => $job->customer->email,
             'customerName' => $job->customer->name,
+            'customerPhone' => $job->customer->phone,
+            'customerOrganisation' => $job->customer->organisation,
+            'customerAddress' => $job->customer->address_1,
+            'customerDistrict' => $job->customer->district->name,
             'jobPrice' => $job->quotation->price
         ];
 
-        $pdf = Pdf::loadView('pdfs.quotation', $data);
+        $pdf = Pdf::loadView('pdfs.quotation-test', $data);
         return $pdf->stream();
     }
 }

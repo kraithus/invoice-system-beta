@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>iquote | New Job </title>
+    <title>{{ config('app.name') }} | New Job</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Scripts -->
@@ -91,14 +91,23 @@
                         <div class="box">
                             <h4 class="block-title">New Job <span class="la la-plus-circle"></span></h4>
                             <div class="title-border"></div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form action="/job" method="POST" class="col-md-9">
                             @csrf    
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="name" class="all_forms_label"><span class="la la-"></span>Job Name:</label>
-                                        <input type="text" class="form-control all_forms" name="name" placeholder="Consultancy">
+                                        <input type="text" class="form-control all_forms" name="name" placeholder="Consultancy" value="{{ old('name') }}">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-select col-md-6">
                                         <label for="customer">Select Customer</label>
                                         <select id="customerSearch" class="form-control all_forms" name="customer_id">
                                             <option selected disabled>Choose...</option>
@@ -109,7 +118,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="price"><span class="la la-"></span>Price:</label>
-                                        <input class="form-control all_forms" type="number" name="price">
+                                        <input class="form-control all_forms" type="number" name="price" value="{{ old('price') }}">
                                     </div>
                                 </div>
                                 <button class="all_btn" type="submit">Save</button>
