@@ -55,14 +55,6 @@
 					@endif
 					<div class="col-md-4">
 						<div class="box">
-<<<<<<< HEAD
-							<h4 class="block-title">Jobs <span class="la la-briefcase"></span></h4>
-						<div class="title-border"></div>
-							<div>
-								{!! $chart->container() !!}
-							</div>
-						</div>
-=======
 							<h4 class="block-title">Today<span class="la la-calendar"></span></h4>
 							<div class="title-border"></div>
 							<div class="media">
@@ -78,8 +70,13 @@
 						</div>
 					</div>
 					<div class="col-md-4">
-						{!! $chart->container() !!}
->>>>>>> 3d464104cc94ecf516d577f7bc26553d483d9382
+						<div class="box">
+							<h5 class="block-title">Jobs <span class="la la-briefcase"></span></h5>
+							<div class="title-border"></div>
+							<div>
+								{!! $chart->container() !!}
+							</div>
+						</div>
 					</div>	
 					
 				</div>
