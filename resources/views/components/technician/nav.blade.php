@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-		<a class="navbar-brand" href="/cpanel">
+		<a class="navbar-brand" href="/">
 			<h2>{{ config('app.name') }}</h2>
 		</a>
+
 		<ul class="nav_tool ml-auto">
 			<li class="dropdown">
 				<a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
@@ -20,6 +21,9 @@
 						</a>
 					</form>
 				</div>
+			</li>
+			<li>
+				<a href="/notification"><span class="la la-envelope"><span class="badge badge-light">@livewire('unread-notifications-count')</span></span></a>
 			</li>
 		</ul>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarMenu"
