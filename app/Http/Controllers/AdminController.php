@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Charts\WeeklyJobs;
 use App\Charts\WeeklyRevenue;
 use App\Models\Job;
+use App\Models\Quotation;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,18 @@ class AdminController extends Controller
             ]
         ]);
 
-        return view('admin.index', compact('chart'));
+        /** 
+         * Sum quotations for today
+        */
+        $sumQuotationPrices = Quotation::where('created_at', '>=', today())->sum('price');
+
+        $data = [
+            'chart' => $chart,
+            'priceSum' => $sumQuotationPrices,
+            'jobCount' => $todayJobs,
+        ];
+
+        return view('admin.index', $data);
     }    
 
     public function jobsDone()

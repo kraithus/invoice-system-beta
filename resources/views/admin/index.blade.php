@@ -54,6 +54,22 @@
 					</div>
 					@endif
 					<div class="col-md-4">
+						<div class="box">
+							<h4 class="block-title">Today<span class="la la-calendar"></span></h4>
+							<div class="title-border"></div>
+							<div class="media">
+								<div class="media-body">    
+									<h5><strong>Jobs Done:</strong> {{ $jobCount }}</h5> 		
+								</div>
+							</div>	
+							<div class="media">
+								<div class="media-body">    
+									<h5><strong>Sum of Quotations:</strong> MWK {{ number_format($priceSum) }}</h5> 		
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
 						{!! $chart->container() !!}
 					</div>	
 					

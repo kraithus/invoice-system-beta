@@ -21,6 +21,9 @@
 					</form>
 				</div>
 			</li>
+			<li>
+				<a href="/notification"><span class="la la-envelope"><span class="badge badge-light">@livewire('unread-notifications-count')</span></span></a>
+			</li>
 		</ul>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarMenu"
 			aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
