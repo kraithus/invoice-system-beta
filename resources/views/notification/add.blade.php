@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>iquote </title>
+	<title>{{ config('app.name') }} | Notify Technician</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Scripts -->
@@ -27,38 +27,7 @@
     });
 </script>    
     <!---MAIN NAV--->
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" aria-labelledby="">
-        <a class="navbar-brand" href="#">
-            <h2>ORG</h2>
-        </a>
-
-        <ul class="nav_tool ml-auto">
-            <li class="dropdown">
-                <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <img src="{{ asset('assets/images/user-icon.png') }}" width="25" height="25" class="rounded-circle" alt="">
-                </a>
-				<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
-					aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#"><span class="la la-user-edit"></span> Edit Profile</a>
-					<form method="POST" action="{{ route('logout') }}">
-						@csrf
-						<a class="dropdown-item" :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                Log Out
-						</a>
-					</form>
-				</div>
-            </li>
-            <li>
-
-        </ul>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarMenu"
-            aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="la la-bars"></span>
-        </button>
-    </nav>
+    <x-admin.nav />
     <!---MAIN NAV--->
 
     <div class="container-fluid">

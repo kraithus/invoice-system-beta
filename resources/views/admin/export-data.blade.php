@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>iquote | {{ $title }} </title>
+	<title>{{ config('app.name') }} | {{ $title }}</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Scripts -->
@@ -26,7 +26,7 @@
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="cpanel"><span class="la la-home"></span> Home</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/notification/create"><span class="la la-bullhorn"></span> Send Notification</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/jobs-done"><span class="la la-briefcase"></span> View Jobs</a></li>
-						<li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="export-data"><span class="la la-briefcase"></span> Export Data</a></li>
+						<li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="export-data"><span class="la la-database"></span> Export Data</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -43,7 +43,7 @@
 							</ol>
 						</nav>
 					</div>
-					@if(session()->has('message'))
+					@if(session()->has('message'))<span class="la la-calendar"></span>
 					<div class="col-md-12">
 						<div class="alert alert-success alert-dismissible fade show" role="alert">
 							{{ session()->get('message') }}
@@ -53,19 +53,21 @@
 					@endif
 					<div class="col-md-4">
 						<div class="box">
-							<h4 class="block-title">Export Monthly Jobs Info<span class="la la-group"></span></h4>
+							<h4 class="block-title">Export Monthly Jobs Info <span class="la la-calendar"></span></h4>
 							<div class="title-border"></div>
 							<div class="media">
-								<span class="la la-group mr-4 over_customer" alt="..."></span>
 								<div class="media-body">
                                     <form method="POST" action="monthly-jobs-table">
                                     @csrf        
-                                    <select name="month">
-										@foreach ($period as $dt)
-											<option value="{{ $dt->format('m') }}">{{ $dt->format('F') }}</option>
-										@endforeach
-                                    </select>
-                                    <button class="all_btn" type="submit">Generate Report</button>
+									<div class="form-group">
+										<label for="month">Select Month</label>	
+											<select class="form-control all_forms" name="month">
+											@foreach ($period as $dt)
+												<option value="{{ $dt->format('m') }}">{{ $dt->format('F') }}</option>
+											@endforeach
+											</select>				
+									</div>		
+									<button class="generate_btn" type="submit"><span class="la la-file-alt"></span> Generate Report</button>
                                     </form>
 								</div>
 							</div>

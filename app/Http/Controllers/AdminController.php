@@ -26,7 +26,7 @@ class AdminController extends Controller
          */
         $chart = new WeeklyJobs;
         $chart->labels=(['2 Days ago', 'Yesterday', 'Today']);
-        $chart->dataset('Jobs this week', 'line', [$jobs2DaysAgo, $yesterdayJobs, $todayJobs])->options([
+        $chart->dataset('Jobs', 'line', [$jobs2DaysAgo, $yesterdayJobs, $todayJobs])->options([
             ['scales' => 
                 ['y' => 
                     ['ticks' => 'stepSize: 1']

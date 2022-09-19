@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>iquote | New Job </title>
+    <title>{{ config('app.name') }} | New Job</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Scripts -->
@@ -81,7 +81,7 @@
                                         <label for="name" class="all_forms_label"><span class="la la-"></span>Job Name:</label>
                                         <input type="text" class="form-control all_forms" name="name" placeholder="Consultancy" value="{{ old('name') }}">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-select col-md-6">
                                         <label for="customer">Select Customer</label>
                                         <select id="customerSearch" class="form-control all_forms" name="customer_id">
                                             <option selected disabled>Choose...</option>
