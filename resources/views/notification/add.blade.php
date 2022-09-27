@@ -22,7 +22,18 @@
     $(document).ready(function() {
         $('#technicianSearch').multiselect({
             enableFiltering: true,
-            enableCaseInsensitiveFiltering: true
+            enableCaseInsensitiveFiltering: true,
+            templates: {
+                button: '<button type="button" class="multiselect dropdown-toggle form-control all_forms" data-toggle="dropdown"><span class="multiselect-selected-text"></span></button>',
+                popupContainer: '<div class="multiselect-container dropdown-menu"></div>',
+                filter: '<div class="multiselect-filter d-flex align-items-center"><i class="fas fa-sm fa-search text-muted"></i><input type="search" class="multiselect-search form-control" /></div>',
+                buttonGroup: '<div class="multiselect-buttons btn-group" style="display:flex;"></div>',
+                buttonGroupReset: '<button type="button" class="multiselect-reset btn btn-secondary btn-block"></button>',
+                option: '<button type="button" class="multiselect-option form-control all_forms dropdown-item"></button>',
+                divider: '<div class="dropdown-divider"></div>',
+                optionGroup: '<button type="button" class="multiselect-group dropdown-item"></button>',
+                resetButton: '<div class="multiselect-reset text-center p-2"><button type="button" class="btn btn-sm btn-block btn-outline-secondary"></button></div>'    
+            }
         });
     });
 </script>    
@@ -72,7 +83,7 @@
                             @endif
                             <form action="/notification" method="POST" class="col-md-10">
                                 @csrf
-                                <label for="to">Select Recipient:</label>
+                                <label for="to">Select Recipient:</label><br />
                                 <select id="technicianSearch" class="form-control all_forms" name="technician_id">
                                             <option selected disabled>Choose...</option>
                                             @foreach ($technicians as $technician)
