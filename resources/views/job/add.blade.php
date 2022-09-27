@@ -22,7 +22,18 @@
     $(document).ready(function() {
         $('#customerSearch').multiselect({
             enableFiltering: true,
-            enableCaseInsensitiveFiltering: true
+            enableCaseInsensitiveFiltering: true,
+            templates: {
+                button: '<button type="button" class="multiselect dropdown-toggle form-control all_forms" data-toggle="dropdown"><span class="multiselect-selected-text"></span></button>',
+                popupContainer: '<div class="multiselect-container dropdown-menu"></div>',
+                filter: '<div class="multiselect-filter d-flex align-items-center"><i class="fas fa-sm fa-search text-muted"></i><input type="search" class="multiselect-search form-control" /></div>',
+                buttonGroup: '<div class="multiselect-buttons btn-group" style="display:flex;"></div>',
+                buttonGroupReset: '<button type="button" class="multiselect-reset btn btn-secondary btn-block"></button>',
+                option: '<button type="button" class="multiselect-option form-control all_forms dropdown-item"></button>',
+                divider: '<div class="dropdown-divider"></div>',
+                optionGroup: '<button type="button" class="multiselect-group dropdown-item"></button>',
+                resetButton: '<div class="multiselect-reset text-center p-2"><button type="button" class="btn btn-sm btn-block btn-outline-secondary"></button></div>'    
+            }
         });
     });
 </script>
@@ -108,7 +119,7 @@
                                         <input type="text" class="form-control all_forms" name="name" placeholder="Consultancy" value="{{ old('name') }}">
                                     </div>
                                     <div class="form-select col-md-6">
-                                        <label for="customer">Select Customer</label>
+                                        <label for="customer">Select Customer</label></br>
                                         <select id="customerSearch" class="form-control all_forms" name="customer_id">
                                             <option selected disabled>Choose...</option>
                                             @foreach ($customers as $customer)
