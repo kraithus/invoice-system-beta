@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('quotation_id')->nullable()->constrained()->nullOnDelete();
             $table->string('status', 1)->default('0');
+            $table->string('inv_number', 25);
             $table->timestamps();
         });
     }

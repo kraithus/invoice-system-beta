@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('job_id')->nullable()->constrained()->nullOnDelete();
             $table->decimal('price', 10, 2);
+            $table->string('qtn_number', 25);
             $table->timestamps();
         });
     }

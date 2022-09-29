@@ -57,13 +57,18 @@ class QuotationController extends Controller
 
         $quotation = new Quotation;
 
+        // Fetch latest quotation id
+        $maxQuotationID = Quotation::max('id');
+        $newQuotationNum = $maxQuotationID + 1;
+
+
         $quotation->job_id = $request->job_id;
         $quotation->price = $request->price;
+        $quotation->qtn_number = 'QTN00' . $newQuotationNum;
 
         $quotation->save();
 
         return redirect()->route('quotation.index')->with('message', 'Quotation price set');
-
     }
 
     /**
