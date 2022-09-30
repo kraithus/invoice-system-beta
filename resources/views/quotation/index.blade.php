@@ -80,6 +80,7 @@
                                     <table id="customerTable" class="table table-striped" aria-labelledby="">
                                         <thead class="thead-dark">
                                             <tr>
+                                                <th>Quotation #</th>
                                                 <th>Job</th>
                                                 <th>Customer Name</th>
                                                 <th>Price</th>
@@ -89,6 +90,7 @@
                                         <tbody>
                                         @foreach ($jobs as $job)
                                         <tr>
+                                            <td>{{ $job->quotation->qtn_number }}
                                             <td>{{ $job->name }}</td>
                                             <td>{{ $job->customer->name }}</td>
                                             <td>{{ $job->quotation->price }}</td>

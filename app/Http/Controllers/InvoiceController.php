@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoice;
+use App\Models\Quotation;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -35,11 +36,28 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
+        $quotationID = $request->quotation_id;
+
         $invoice = new Invoice;
 
-        $invoice->quotation_id = $request->quotation_id;
+        $invoice->quotation_id = $quotationID;
+
+        // compute invoice number
+        $maxInvoiceID = Invoice::max('id');
+        $newInvoiceNum = $maxInvoiceID + 1;
+        $invoice->inv_number = 'INV00' . $newInvoiceNum;
 
         $invoice->save();
+
+        // Get quotation information
+        $quotation = Quotation::find($quotationID);
+        $jobID = $quotation->job_id;
+
+        /**
+         * Send JOB id to a helper//face... something which will send the email
+         * If only I could figure that out... soon enough.
+         */
+        IssueInvoice::sendInvoiceMail($jobID);
     }
 
     /**

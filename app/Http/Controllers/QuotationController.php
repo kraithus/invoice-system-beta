@@ -50,25 +50,11 @@ class QuotationController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'job_id' => 'required',
-            'price' => 'integer'
-        ]);
-
-        $quotation = new Quotation;
-
-        // Fetch latest quotation id
-        $maxQuotationID = Quotation::max('id');
-        $newQuotationNum = $maxQuotationID + 1;
-
-
-        $quotation->job_id = $request->job_id;
-        $quotation->price = $request->price;
-        $quotation->qtn_number = 'QTN00' . $newQuotationNum;
-
-        $quotation->save();
-
-        return redirect()->route('quotation.index')->with('message', 'Quotation price set');
+        /**
+         * Nothing here. What you need is in class JobController, function store()
+         * Well hello there future me who seems to have forgotten that the creation of a job and quotation
+         * was put in one method for the sake of convenience and the form structure.
+         */
     }
 
     /**

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Customer;
 use App\Models\District;
 use App\Models\Job;
-use App\Mail\JobQuotation;
+use App\Mail\InvoiceIssue;
 use App\Models\Quotation;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,22 +14,11 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Barryvdh\DomPDF\Facade\Pdf;
 
-class QuotationIssuedController extends Controller
+class InvoiceIssueController extends Controller
 {
-    public function dataTables()
+    public function sendInvoiceMail($id)
     {
-        $userID = Auth::user()->id;
-        $technicianJobs = User::find($userID)->jobs;
-
-        return view('test.datatables-index', [
-            'jobs' => $technicianJobs,
-            'title' => 'Test Datatables'
-        ]);
-    }
-
-    public function sendQuotationMail($id)
-    {
-        // Get the job ID
+        // Catch the job ID
         $jobID = $id;
 
         // Get details for job matching ID
@@ -49,7 +38,7 @@ class QuotationIssuedController extends Controller
             'jobDate' => $job->created_at
         ];
 
-        $pdfContents = Pdf::loadView('pdfs.quotation-test', $data)->output(); //Convert to string
+        $pdfContents = Pdf::loadView('pdfs.invoice', $data)->output(); //Convert to string
         $pdfName = $data['customerName'] . '-' . $jobID . '.pdf';
         Storage::disk('local')->put('/public/' . $pdfName, $pdfContents); // Write to disk
 
@@ -58,14 +47,14 @@ class QuotationIssuedController extends Controller
         $customerName = $job->customer->name;
         $jobPrice = $job->quotation->price;
 
-        Mail::to($customerEmail)->send(new JobQuotation($jobName, $customerName, $jobPrice, $pdfName));
+        Mail::to($customerEmail)->send(new InvoiceIssue($jobName, $customerName, $jobPrice, $pdfName));
 
         return redirect()->route('quotation.index')->with('message', 'Email Sent! Have a good day');
     }
 
-    public function viewQuotationPDF($id)
+    public function viewInvoicePDF($id)
     {
-        // Get the job ID
+        // Catch the job ID
         $jobID = $id;
 
         // Get details for job matching ID
@@ -84,7 +73,7 @@ class QuotationIssuedController extends Controller
             'jobDate' => $job->created_at
         ];
 
-        $pdf = Pdf::loadView('pdfs.quotation-test', $data);
+        $pdf = Pdf::loadView('pdfs.invoice', $data);
         return $pdf->stream();
     }
 }

@@ -173,7 +173,7 @@
 <body>
 
 <div class="head-title">
-    <h1 class="text-center m-0 p-0">Quotation</h1>
+    <h1 class="text-center m-0 p-0">Invoice</h1>
 
 </div>
 
@@ -181,7 +181,7 @@
 
     <div class="w-50 float-left mt-10">
 
-        <p class="m-0 pt-5 text-bold w-100">Quotation No: {{ $quotationNum }} <span class="gray-color"></span></p>
+        <p class="m-0 pt-5 text-bold w-100">Invoice No: {{ $invoiceNum }} <span class="gray-color"></span></p>
 
         <p class="m-0 pt-5 text-bold w-100">Job Date: {{ $jobDate }} <span class="gray-color"></span></p>
 

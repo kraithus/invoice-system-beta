@@ -97,6 +97,7 @@
                                                 <th>Price</th>
                                                 <th>Date</th>
                                                 <th>Email Quotation</th>
+                                                <th>Invoice</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -109,6 +110,13 @@
                                             <td>
                                             <a href="{{ route('email-quotation', $job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
                                             <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
+                                            </td>
+                                            <td>
+                                                <form action="/invoice" method="POST">
+                                                    @csrf 
+                                                    <input type="hidden" name="quotation_id" value="{{ $job->quotation->id }}">
+                                                    <button type="submit" class="all_btn_quote">Generate Invoice</button>
+                                                </form>    
                                             </td>
                                         </tr>    
                                         @endforeach     

@@ -32,7 +32,6 @@ use App\Http\Middleware\EnsureHasRole;
  */
 Route::middleware(['auth'])->group(function () {
     Route::resource('customer', CustomerController::class);
-    Route::resource('invoice', InvoiceController::class);
     Route::resource('job', JobController::class);
     Route::resource('notification', NotificationController::class);
     Route::resource('quotation', QuotationController::class);
@@ -70,6 +69,11 @@ Route::middleware(['auth'])->group(function () {
      * Is Admin middleware
      */
         Route::middleware(['is.admin'])->group(function () {
+            /**
+             * Routes accessible only to the administrator
+             */
+            Route::resource('invoice', InvoiceController::class);
+
             Route::controller(AdminController::class)->group(function () {
                 Route::get('cpanel', 'index')->name('cpanel');
 

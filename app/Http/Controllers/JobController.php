@@ -66,8 +66,13 @@ class JobController extends Controller
         // Save quotation details
         $quotation = new Quotation;
 
+        // Fetch latest quotation id
+        $maxQuotationID = Quotation::max('id');
+        $newQuotationNum = $maxQuotationID + 1;
+
         $quotation->job_id = $latestJobID;
         $quotation->price = $request->price;
+        $quotation->qtn_number = 'QTN00' . $newQuotationNum;
 
         $quotation->save();
 
