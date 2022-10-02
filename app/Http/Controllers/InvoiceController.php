@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Invoice;
 use App\Models\Quotation;
+use App\IssueInvoice\IssueInvoiceFacade;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -54,10 +55,12 @@ class InvoiceController extends Controller
         $jobID = $quotation->job_id;
 
         /**
-         * Send JOB id to a helper//face... something which will send the email
+         * Send JOB id to a helper//facade... something which will send the email
          * If only I could figure that out... soon enough.
          */
-        IssueInvoice::sendInvoiceMail($jobID);
+        IssueInvoiceFacade::sendInvoiceMail($jobID);
+
+        return redirect()->route('cpanel')->with('message', 'Email Sent! Have a good day');
     }
 
     /**

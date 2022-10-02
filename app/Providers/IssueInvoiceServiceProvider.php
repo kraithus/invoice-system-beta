@@ -14,7 +14,7 @@ class IssueInvoiceServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('issueinvoice', function(){
-            return new IssueInvoice();
+            return new \App\IssueInvoice\IssueInvoice();
         });
     }
 
