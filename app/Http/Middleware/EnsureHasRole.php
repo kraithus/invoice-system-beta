@@ -17,10 +17,14 @@ class EnsureHasRole
      */
     public function handle(Request $request, Closure $next)
     {   
-        $role_id = Auth::user()->role_id;
-        if ($role_id != 1){
-        return redirect('dashboard');    
-        }
+        if (!Auth::check()) {
+            abort(401);
+        } else {
+            $role_id = Auth::user()->role_id;
+            if ($role_id != 1){
+                return redirect('dashboard');    
+            }
+        }    
         return $next($request);
     }
 }
