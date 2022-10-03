@@ -29,6 +29,7 @@
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="notification/create"><span class="la la-bullhorn"></span> Send Notification</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/jobs-done"><span class="la la-briefcase"></span> View Jobs</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/export-data"><span class="la la-database"></span> Export Data</a></li>
+						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/register"><span class="la la-database"></span> Register Technician</a></li>
 					</ul>
 				</div>
 			</nav>

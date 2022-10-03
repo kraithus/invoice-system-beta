@@ -28,9 +28,9 @@ use App\Http\Middleware\EnsureHasRole;
 */
 
 /**
- * Route that need user authentication before being accessed
+ * Route that need user authentication before being accessed and only be accessed once user verifies their email
  */
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('customer', CustomerController::class);
     Route::resource('job', JobController::class);
     Route::resource('notification', NotificationController::class);
