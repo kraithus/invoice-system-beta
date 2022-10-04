@@ -47,7 +47,10 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        Auth::login($user);
+        /**
+         * This sets a user instance as the currently authenticated user, uncomment if you want this behaviour
+         */
+        //Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
     }

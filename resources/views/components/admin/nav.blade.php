@@ -10,6 +10,7 @@
 				</a>
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
 					aria-labelledby="navbarDropdownMenuLink">
+					<a class="dropdown-item" href="#">{{ Auth::user()->name }}</a>
 					<a class="dropdown-item" href="#"><span class="la la-user-edit"></span> Edit Profile</a>
 					<form style="cursor: pointer" method="POST" action="{{ route('logout') }}">
 						@csrf

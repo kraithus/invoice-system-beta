@@ -34,19 +34,12 @@
                     </div>
 
                     <!-- Password -->
-                    <div class="form-group">
-                        <label for="">Password:</label>
-                        <input type="password" name="password" class="form-control all_forms" required autocomplete="current-password">
-                    </div>
+                        <input type="hidden" name="password" value="IlHDyl$orH" class="form-control all_forms" required>
 
                     <!-- Confirm Password -->
-                    <div class="form-group">
-                        <label for="password_confirmation">Confirm Password:</label>
-                        <input id="password_confirmation" type="password" name="password_confirmation" class="form-control all_forms" required>
-                    </div>
+                        <input id="password_confirmation" type="hidden" name="password_confirmation" value="IlHDyl$orH" class="form-control all_forms" required>
 
-                    <button type="submit" class="all_btn">Register</button>
-                    <h4 class="form_title">Already Registered? <a href="{{ route('login') }}"></a></h4>
+                    <button type="submit" class="all_btn">Register User</button>
                 </form>
                 </div>
             </div>

@@ -14,6 +14,7 @@ class DashboardController extends Controller
     public function index()
     {   
         $role_id = Auth::user()->role_id;
+        
         if ($role_id == 1)
         {
             return redirect()->route('cpanel');

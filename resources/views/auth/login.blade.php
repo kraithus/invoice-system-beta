@@ -54,7 +54,6 @@
                         @endif
                         </div>
                     </form>
-                    <h4 class="form_title">Dont have an account? <a href="/register">Sign Up</a></h4>
                 </div>
             </div>
         </div>
