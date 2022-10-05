@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('job_id')->nullable()->constrained()->nullOnDelete();
             $table->decimal('price', 10, 2);
             $table->string('qtn_number', 25);
+            $table->string('invoice_status', 1)->default('0');
             $table->timestamps();
         });
     }
