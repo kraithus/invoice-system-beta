@@ -34,4 +34,15 @@ class Quotation extends Model
     {
         return $this->hasOne(Invoice::class);
     }
+
+    /**
+     * Scope a query to update the specified quotation
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUpdateInvoiceStatus($query)
+    {
+       return $query->update(['invoice_status' => 1]);
+    }
 }

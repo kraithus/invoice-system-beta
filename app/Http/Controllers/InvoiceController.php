@@ -43,7 +43,9 @@ class InvoiceController extends Controller
 
         $invoice->quotation_id = $quotationID;
 
-        // compute invoice number
+        /**
+         * Compute invoice number. Get
+         */
         $maxInvoiceID = Invoice::max('id');
         $newInvoiceNum = $maxInvoiceID + 1;
         $invoice->inv_number = 'INV00' . $newInvoiceNum;
@@ -53,6 +55,11 @@ class InvoiceController extends Controller
         // Get quotation information
         $quotation = Quotation::find($quotationID);
         $jobID = $quotation->job_id;
+
+        // Find invoice
+        $invoice = Invoice::find($newInvoiceNum);
+        // Update quotation of which invoice belongs to
+        $quotation = $invoice->quotation()->updateinvoicestatus();
 
         /**
          * Send JOB id to a helper//facade... something which will send the email
