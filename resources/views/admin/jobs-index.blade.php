@@ -113,6 +113,7 @@
                                             <a href="{{ route('email-quotation', $job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
                                             <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
                                             </td>
+                                            @if ($job->quotation->invoice_status == 0)
                                             <td>
                                                 <form action="/invoice" method="POST">
                                                     @csrf 
@@ -120,6 +121,11 @@
                                                     <button type="submit" class="all_btn_quote">Generate Invoice</button>
                                                 </form>    
                                             </td>
+                                            @elseif ($job->quotation->invoice_status == 1)
+                                            <td>
+                                                    <a href="{{ route('resend-invoice', $job->id) }}"><button type="submit" class="all_btn_quote">Resend Invoice</button></a>   
+                                            </td>
+                                            @endif
                                         </tr>    
                                         @endforeach     
                                         </tbody>
