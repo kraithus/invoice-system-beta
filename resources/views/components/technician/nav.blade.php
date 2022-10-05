@@ -12,7 +12,7 @@
 				<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
 					aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="#">{{ Auth::user()->name }}</a>
-					<a class="dropdown-item" href="#"><span class="la la-user-edit"></span> Edit Profile</a>
+					<a class="dropdown-item" href="change-password"><span class="la la-user-edit"></span> Settings</a>
 					<form style="cursor: pointer" method="POST" action="{{ route('logout') }}">
 						@csrf
 						<a class="dropdown-item" :href="route('logout')"

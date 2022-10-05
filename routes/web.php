@@ -66,6 +66,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     /**
+     * User change password
+     */
+    Route::controller(UserController::class)->group(function(){
+        Route::get('change-password', 'changePassword')->name('change-password');
+
+        Route::patch('update-password', 'updatePassword')->name('update-password');
+    });
+
+    /**
      * Is Admin middleware
      */
         Route::middleware(['is.admin'])->group(function () {

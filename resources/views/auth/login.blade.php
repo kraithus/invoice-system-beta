@@ -27,7 +27,7 @@
                         <!-- Email Address -->
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control all_forms" name="email">
+                            <input type="email" class="form-control all_forms" name="email" :value="old('email')">
                         </div>
 
                         <!-- Password -->
