@@ -84,10 +84,7 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {   
-        $data = [
-            'title' => 'Update Invoice',
-        ];
-        return view('admin.invoice.edit', $data);
+
     }
 
     /**
@@ -97,8 +94,16 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        // Get invoice
+        $invoice = Invoice::find($id);
+
+        // Pass data for the view to array
+        $data = [
+            'title' => 'Update Invoice',
+            'invoice' => $invoice,
+        ];
+        return view('admin.invoice.edit', $data);
     }
 
     /**

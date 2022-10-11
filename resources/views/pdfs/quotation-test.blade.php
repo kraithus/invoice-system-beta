@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Receipt</title>
+    <title>Quotation</title>
 
 </head>
 

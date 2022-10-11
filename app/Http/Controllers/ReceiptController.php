@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
+use App\Models\Quotation;
+use App\Models\Receipt;
+use App\IssueReceipt\IssueReceiptFacade;
 use Illuminate\Http\Request;
 
 class ReceiptController extends Controller
@@ -33,8 +37,37 @@ class ReceiptController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        $request->validate([
+            'payment_method' => 'required',
+        ]);
+
+        $invoiceID = $request->invoice_id;
+        $payment_method = $request->payment_method;
+
+        $receipt = Receipt::create([
+            'invoice_id' => $invoiceID,
+            'payment_method' => $payment_method,
+        ]);
+
+        $receipt->save();
+
+        // Get ID of latest receipt
+        $latestReceipt = Receipt::find($receipt->id);
+
+        // Update parent invoice of receipt
+        $invoice = $latestReceipt->invoice()->updatepaymentstatus();
+
+        // Get job receipt is for
+        // Chain query
+        $jobID = $latestReceipt->invoice->quotation->job_id;
+
+        /**
+         * Send JOB id to a facade which mails the receipt to client
+         */
+        IssueReceiptFacade::sendReceiptMail($jobID);
+
+        return redirect()->route('cpanel')->with('message', 'Receipt generated and mailed to client');
     }
 
     /**

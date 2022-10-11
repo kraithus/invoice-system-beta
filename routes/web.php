@@ -11,6 +11,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationIssuedController;
+use App\Http\Controllers\ReceiptController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureHasRole;
@@ -81,6 +82,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
              * Routes accessible only to the administrator
              */
             Route::resource('invoice', InvoiceController::class);
+
+            Route::resource('receipt', ReceiptController::class);
 
             Route::controller(InvoiceIssueController::class)->group(function () {
                 Route::get('resend-invoice/{id}', 'resendInvoice')->name('resend-invoice');

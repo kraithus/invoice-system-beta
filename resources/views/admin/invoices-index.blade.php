@@ -75,7 +75,7 @@
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="dashboard"><span class="la la-home"></span> Home</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Invoices</li>
-							</ol>e
+							</ol>
 						</nav>
 					</div>
 					@if(session()->has('message'))
@@ -111,14 +111,14 @@
                                             <td>{{ $invoice->quotation->job->customer->name }}</td>
                                             <td>{{ $invoice->quotation->price }}</td>
                                             <td>
-                                                @if ($invoice->status == 0)
+                                                @if ($invoice->payment_status == 0)
                                                 Not Paid
                                                 @else
                                                 Paid
                                                 @endif
                                             </td>
                                             <td>{{ $invoice->created_at }}</td>
-                                            <td><a href="{{ route('invoice.show', $invoice->id) }}">Update</a></td>
+                                            <td><a href="{{ route('invoice.edit', $invoice->id) }}">Update</a></td>
                                         </tr>
                                         @endforeach     
                                         </tbody>
