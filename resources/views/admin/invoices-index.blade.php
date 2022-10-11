@@ -47,25 +47,25 @@
     </script>  
 	<!-- MAIN NAV -->
 	<x-admin.nav />
-	<!-- MAIN NAV -->   
+	<!-- MAIN NAV -->
+
     <div class="container-fluid">
 		<div class="row">
 
-			<!---SIDE BAR--->
+			<!---SIDE BAR -->
 			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" aria-label="">
 				<div class="sidebar-sticky pt-3">
 					<ul class="side_nav list-unstyled flex-column px-3 pt-2 pb-4">
-						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="cpanel"><span class="la la-home"></span> Home</a></li>
-						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="customer/create"><span class="la la-user-plus"></span> Add Customer</a></li>
-						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="notification/create"><span class="la la-briefcase"></span> Send Notification</a></li>
-						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="jobs-done"><span class="la la-briefcase"></span> View Jobs</a></li>
-                        <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/invoice"><span class="la la-briefcase"></span> Invoices</a></li>
-                        <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="export-data"><span class="la la-file-invoice"></span> Export Data</a></li>
+						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/cpanel"><span class="la la-home"></span> Home</a></li>
+						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/notification/create"><span class="la la-bullhorn"></span> Send Notification</a></li>
+						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/jobs-done"><span class="la la-briefcase"></span> View Jobs</a></li>
+                        <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="/invoice"><span class="la la-file-invoice"></span> Invoices</a></li>
+						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/export-data"><span class="la la-database"></span> Export Data</a></li>
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/register"><span class="la la-address-book"></span> Register Technician</a></li>
 					</ul>
 				</div>
 			</nav>
-			<!---SIDE BAR--->
+			<!---SIDE BAR -->
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 				<!---Pangani div apapa---->
@@ -74,8 +74,8 @@
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="dashboard"><span class="la la-home"></span> Home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">Jobs</li>
-							</ol>
+								<li class="breadcrumb-item active" aria-current="page">Invoices</li>
+							</ol>e
 						</nav>
 					</div>
 					@if(session()->has('message'))
@@ -88,29 +88,38 @@
 					@endif
                     <div class="col-md-12">
 							<div class="box">
-                                <h4 class="block-title">Quotations <span class="la la-th-list"></span></h4>
+                                <h4 class="block-title">Invoices <span class="la la-th-list"></span></h4>
                                 <div class="title-border"></div>
                                 <div class="table-reponsive">
                                     <table id="jobTable" class="table table-striped" aria-labelledby="">
                                         <thead class="thead-dark">
                                             <tr>
+                                                <th>Invoice #</td>
                                                 <th>Job</th>
                                                 <th>Customer Name</th>
                                                 <th>Price</th>
-                                                <th>Email Quotation</th>
+                                                <th>Status</th>
+                                                <th>Date</th>
+                                                <th>Update</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($jobs as $job)
+                                        @foreach ($invoices as $invoice)
                                         <tr>
-                                            <td>{{ $job->name }}</td>
-                                            <td>{{ $job->customer->name }}</td>
-                                            <td>{{ $job->quotation->price }}</td>
+                                            <td>{{ $invoice->inv_number }}</td>
+                                            <td>{{ $invoice->quotation->job->name }}</td>
+                                            <td>{{ $invoice->quotation->job->customer->name }}</td>
+                                            <td>{{ $invoice->quotation->price }}</td>
                                             <td>
-                                            <a href="{{ route('email-quotation', $job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
-                                            <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
+                                                @if ($invoice->status == 0)
+                                                Not Paid
+                                                @else
+                                                Paid
+                                                @endif
                                             </td>
-                                        </tr>    
+                                            <td>{{ $invoice->created_at }}</td>
+                                            <td><a href="{{ route('invoice.show', $invoice->id) }}">Update</a></td>
+                                        </tr>
                                         @endforeach     
                                         </tbody>
                                     </table>
