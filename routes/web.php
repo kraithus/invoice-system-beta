@@ -102,6 +102,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
             Route::controller(ReportController::class)->group(function () {
                 Route::get('outstanding-invoices', 'outstandingInvoices')->name('outstanding-invoices');
+
+                Route::get('quotations-pending-escalation', 'quotationsPendingEscalation')->name('quotations-pending-escalation');
             });
         });
 });

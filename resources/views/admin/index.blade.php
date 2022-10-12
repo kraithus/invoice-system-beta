@@ -37,7 +37,7 @@
 						<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
 							aria-labelledby="sidebarDropdownMenuLink">
 							<a class="dropdown-item text-decoration-none px-3 py-2 d-block" href="/outstanding-invoices">Outstanding Invoices</a>
-							<a class="dropdown-item text-decoration-none px-3 py-2 d-block" href="#">Quotations</a>
+							<a class="dropdown-item text-decoration-none px-3 py-2 d-block" href="/quotations-pending-escalation">Quotations Pending Escalation</a>
 						</div>
 					</li>
 					</ul>

@@ -19,4 +19,15 @@ class ReportController extends Controller
 
         return view('admin.reports.outstanding-invoices', $data);
     }
+
+    public function quotationsPendingEscalation()
+    {   
+        $quotations = Quotation::pendingescalation()->get();
+        $data = [
+            'quotations' => $quotations,
+            'title' => 'Quotations Pending Escalation',
+        ];
+
+        return view('admin.reports.quotations-pending-escalation', $data);
+    }
 }
