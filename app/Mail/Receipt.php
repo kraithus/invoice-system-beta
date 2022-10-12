@@ -16,10 +16,12 @@ class Receipt extends Mailable
      *
      * @return void
      */
-    public function __construct($subject, $message)
+    public function __construct($jobName, $customerName, $jobPrice, $pdfName)
     {   
-        $this->subject = $subject;
-        $this->message = $message;
+        $this->customerName = $customerName;
+        $this->jobName = $jobName;
+        $this->jobPrice = $jobPrice;
+        $this->pdfName = $pdfName;
     }
 
     /**
@@ -29,12 +31,19 @@ class Receipt extends Mailable
      */
     public function build()
     {   
-        $subject = $this->subject;    
-        $message = $this->message;    
-        return $this->subject($subject)
-                      ->markdown('emails.receipt', [
-                          'subject' => $subject,
-                          'message' => $message
-                      ]);  
+        $customerName = $this->customerName;
+        $jobName = $this->jobName;
+        $jobPrice = $this->jobPrice;
+        $pdfName = $this->pdfName;
+            
+        return $this->subject('Receipt')
+        ->attach(public_path('/storage/') . $pdfName, [
+            'mime' => 'application/pdf',
+            ])
+            ->markdown('emails.receipt', [
+                'customerName' => $customerName,
+                'jobName' => $jobName,
+                'jobPrice' => $jobPrice
+            ]); 
     }
 }

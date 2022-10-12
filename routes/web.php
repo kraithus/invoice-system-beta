@@ -12,6 +12,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationIssuedController;
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureHasRole;
@@ -97,6 +98,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('export-data', 'dataExport')->name('export-data');
 
                 Route::post('monthly-jobs-table', 'monthlyJobsTable')->name('monthly-jobs-table');
+            });
+
+            Route::controller(ReportController::class)->group(function () {
+                Route::get('outstanding-invoices', 'outstandingInvoices')->name('outstanding-invoices');
             });
         });
 });

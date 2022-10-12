@@ -46,6 +46,17 @@ class Invoice extends Model
     {
        return $query->update(['payment_status' => 1]);
     }    
+
+    /**
+     * Scope a query to only include outstanding invoices.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeOutstanding($query)
+    {
+        $query->where('payment_status', 0);
+    }    
 }
 
 

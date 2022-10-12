@@ -31,6 +31,15 @@
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/invoice"><span class="la la-file-invoice"></span> Invoices</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/export-data"><span class="la la-database"></span> Export Data</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/register"><span class="la la-address-book"></span> Register Technician</a></li>
+						<li class="dropdown">
+						<a class="dropdown-toggle text-decoration-none px-3 py-2 d-block" href="#" id="sidebarDropdownMenuLink" role="button" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"><span class="la la-chart-line"></span> Reports</a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
+							aria-labelledby="sidebarDropdownMenuLink">
+							<a class="dropdown-item text-decoration-none px-3 py-2 d-block" href="/outstanding-invoices">Outstanding Invoices</a>
+							<a class="dropdown-item text-decoration-none px-3 py-2 d-block" href="#">Quotations</a>
+						</div>
+					</li>
 					</ul>
 				</div>
 			</nav>
