@@ -56,7 +56,18 @@ class Invoice extends Model
     public function scopeOutstanding($query)
     {
         $query->where('payment_status', 0);
-    }    
+    }   
+    
+    /**
+     * Scope a query to only include paid invoices.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopePaid($query)
+    {
+        $query->where('payment_status', 1);
+    }       
 }
 
 
