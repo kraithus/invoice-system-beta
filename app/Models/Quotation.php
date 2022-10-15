@@ -45,4 +45,16 @@ class Quotation extends Model
     {
        return $query->update(['invoice_status' => 1]);
     }
+
+    /**
+     * Scope a query to only include quotations 
+     * for which an invoice has not been generated
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopePendingEscalation($query)
+    {
+        $query->where('invoice_status', 0);
+    }       
 }

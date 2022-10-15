@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('invoices', function (Blueprint $table) {
+        Schema::create('receipts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('quotation_id')->nullable()->constrained()->nullOnDelete()->unique();
-            $table->string('payment_status', 1)->default('0'); // 0 if not paid. 1 if paid, updates upon receipt generation
-            $table->string('inv_number', 25);
-            $table->timestamp('reminder_sent_at')->nullable();
+            $table->foreignId('invoice_id')->nullable()->constrained()->nullOnDelete();
+            $table->string('payment_method');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('invoices');
+        Schema::dropIfExists('receipts');
     }
 };

@@ -19,18 +19,21 @@ class QuotationSeeder extends Seeder
         'job_id' => 1,
         'price' => 30000,
         'qtn_number' => 'QTN001',
+        'invoice_status' => 1,
         'created_at' => '2022-09-15 14:15:02'
     ])
     ->create([
         'job_id' => 2,
         'price' => 100000,
         'qtn_number' => 'QTN002',
+        'invoice_status' => 1,
         'created_at' => '2022-09-15 14:15:02'
     ])
     ->create([
         'job_id' => 3,
         'price' => 90000,
         'qtn_number' => 'QTN003',
+        'invoice_status' => 1,
         'created_at' => '2022-09-15 14:15:02'
     ])
     ->create([

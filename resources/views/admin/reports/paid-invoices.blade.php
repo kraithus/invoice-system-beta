@@ -96,18 +96,18 @@
                                                 <th>Job</th>
                                                 <th>Customer Name</th>
                                                 <th>Price</th>
-                                                <th>Email Quotation</th>
+                                                <th>Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($jobs as $job)
+                                        @foreach ($invoices as $invoice)
                                         <tr>
-                                            <td>{{ $job->name }}</td>
-                                            <td>{{ $job->customer->name }}</td>
-                                            <td>{{ $job->quotation->price }}</td>
-                                            <td>
-                                            <a href="{{ route('email-quotation', $job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
-                                            <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
+                                            <td>{{ $invoice->quotation->job->name }}</td>
+                                            <td>{{ $invoice->quotation->job->customer->name }}</td>
+                                            <td>{{ $invoice->quotation->price }}</td>
+                                            <td>@if ($invoice->payment_status == 1)
+                                                Paid
+                                                @endif    
                                             </td>
                                         </tr>    
                                         @endforeach     

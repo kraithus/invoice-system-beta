@@ -16,7 +16,14 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        // Get all invoices
+        $data = [
+            'invoices' => Invoice::all(),
+            'title' => 'Invoices'
+        ];    
+
+        // Load view with jobs data
+        return view('admin.invoices-index', $data);
     }
 
     /**
@@ -57,13 +64,12 @@ class InvoiceController extends Controller
         $jobID = $quotation->job_id;
 
         // Find invoice
-        $invoice = Invoice::find($newInvoiceNum);
-        // Update quotation of which invoice belongs to
-        $quotation = $invoice->quotation()->updateinvoicestatus();
+        $latestInvoice = Invoice::find($newInvoiceNum);
+        // Update quotation of which invoice belongs to using scope
+        $quotation = $latestInvoice->quotation()->updateinvoicestatus();
 
         /**
-         * Send JOB id to a helper//facade... something which will send the email
-         * If only I could figure that out... soon enough.
+         * Send JOB id to a facade... which calls the function to send the email
          */
         IssueInvoiceFacade::sendInvoiceMail($jobID);
 
@@ -77,8 +83,8 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {   
+
     }
 
     /**
@@ -88,8 +94,16 @@ class InvoiceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        // Get invoice
+        $invoice = Invoice::find($id);
+
+        // Pass data for the view to array
+        $data = [
+            'title' => 'Update Invoice',
+            'invoice' => $invoice,
+        ];
+        return view('admin.invoice.edit', $data);
     }
 
     /**

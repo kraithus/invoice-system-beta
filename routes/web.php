@@ -11,6 +11,8 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationIssuedController;
+use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureHasRole;
@@ -48,6 +50,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('test-quotation-pdf/{id}', 'generateQuotationPDF')->name('test-quotation-pdf');
 
         Route::get('weekly-chart', 'chartTest')->name('weekly-chart');
+
+        Route::get('test/weekly-invoice-reminder', 'weeklyInvoiceReminder')->name('test.weekly-invoice-reminder');
     });
     /**
      * Quotation mailing and PDF generation
@@ -82,6 +86,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
              */
             Route::resource('invoice', InvoiceController::class);
 
+            Route::resource('receipt', ReceiptController::class);
+
             Route::controller(InvoiceIssueController::class)->group(function () {
                 Route::get('resend-invoice/{id}', 'resendInvoice')->name('resend-invoice');
             });
@@ -94,6 +100,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('export-data', 'dataExport')->name('export-data');
 
                 Route::post('monthly-jobs-table', 'monthlyJobsTable')->name('monthly-jobs-table');
+            });
+
+            Route::controller(ReportController::class)->group(function () {
+                Route::get('outstanding-invoices', 'outstandingInvoices')->name('outstanding-invoices');
+
+                Route::get('paid-invoices', 'paidInvoices')->name('paid-invoices');
+
+                Route::get('quotations-pending-escalation', 'quotationsPendingEscalation')->name('quotations-pending-escalation');
             });
         });
 });

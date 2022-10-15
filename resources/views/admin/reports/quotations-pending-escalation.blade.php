@@ -90,9 +90,10 @@
                                 <h4 class="block-title">Quotations <span class="la la-th-list"></span></h4>
                                 <div class="title-border"></div>
                                 <div class="table-reponsive">
-                                    <table id="jobTable" class="table table-striped" aria-labelledby="">
+                                <table id="customerTable" class="table table-striped" aria-labelledby="">
                                         <thead class="thead-dark">
                                             <tr>
+                                                <th>Quotation #</th>
                                                 <th>Job</th>
                                                 <th>Customer Name</th>
                                                 <th>Price</th>
@@ -100,14 +101,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($jobs as $job)
+                                        @foreach ($quotations as $quotation)
                                         <tr>
-                                            <td>{{ $job->name }}</td>
-                                            <td>{{ $job->customer->name }}</td>
-                                            <td>{{ $job->quotation->price }}</td>
+                                            <td>{{ $quotation->qtn_number }}
+                                            <td>{{ $quotation->job->name }}</td>
+                                            <td>{{ $quotation->job->customer->name }}</td>
+                                            <td>{{ $quotation->price }}</td>
                                             <td>
-                                            <a href="{{ route('email-quotation', $job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
-                                            <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
+                                            <a href="{{ route('email-quotation', $quotation->job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
+                                            <a href="{{ route('quotation-pdf', $quotation->job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
                                             </td>
                                         </tr>    
                                         @endforeach     
@@ -116,8 +118,6 @@
                                 </div>  
                             </div>
 						</div>                    
-
-					
 				</div>
 			</main>
         </div>    

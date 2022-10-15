@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Charts\WeeklyJobs;
+use App\InvoiceReminderWeekly\InvoiceReminderWeeklyFacade;
 use App\Mail\JobQuotation;
 use App\Models\Quotation;
 use App\Models\Customer;
@@ -83,5 +84,10 @@ class TestController extends Controller
         $chart->dataset('My dataset', 'line', [$jobs2DaysAgo, $yesterdayJobs, $todayJobs]);
 
         return view('test.chart', compact('chart'));
+    }
+
+    public function weeklyInvoiceReminder()
+    {
+        InvoiceReminderWeeklyFacade::sendReminderMail();
     }
 }
