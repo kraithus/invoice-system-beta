@@ -65,31 +65,43 @@
 						  </div>
 					</div>
 					@endif
-					<div class="col-md-4">
+
+					<div class="col-md-12">
 						<div class="box">
 							<h4 class="block-title">Today<span class="la la-calendar"></span></h4>
 							<div class="title-border"></div>
-							<div class="media">
-								<div class="media-body">    
-									<h5><strong>Jobs Done:</strong> {{ $jobCount }}</h5> 		
+							<div class="row">
+								<div class="col-md-4 mb-5">
+									<div class="media">
+										<span class="la la-group mr-4 over_customer" alt="..."></span>
+										<div class="media-body">
+											<h4 class="mt-0">New Jobs</h4>
+											<h5><a href=""><span class="la la-arrow-right"></span> replacing the graph</a></h5>
+										</div>
+									</div>
 								</div>
-							</div>	
-							<div class="media">
-								<div class="media-body">    
-									<h5><strong>Sum of Quotations:</strong> MWK {{ number_format($priceSum) }}</h5> 		
+								<div class="col-md-4 mb-5">
+									<div class="media">
+										<span class="la la-group mr-4 over_customer" alt="..."></span>
+										<div class="media-body">
+											<h4 class="mt-0">Jobs Done</h4>
+											<h5><a href=""><span class="la la-arrow-right"></span> {{ $jobCount }}</a></h5>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-4 mb-5">
+									<div class="media">
+										<span class="la la-group mr-4 over_customer" alt="..."></span>
+										<div class="media-body">
+											<h4 class="mt-0">Sum of Quotations</h4>
+											<h5><a href=""><span class="la la-arrow-right"></span> MWK {{ number_format($priceSum) }}</a></h5>
+										</div>
+									</div>
+									
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4">
-						<div class="box">
-							<h5 class="block-title">Jobs <span class="la la-briefcase"></span></h5>
-							<div class="title-border"></div>
-							<div>
-								{!! $chart->container() !!}
-							</div>
-						</div>
-					</div>	
 					
 				</div>
 			</main>
