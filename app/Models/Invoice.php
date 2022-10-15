@@ -68,6 +68,43 @@ class Invoice extends Model
     {
         $query->where('payment_status', 1);
     }       
+
+    /**
+     * Scope a query to only include invoices which
+     * were created a exactly a week ago or more than a week ago
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeCreatedOverAWeekAgo($query)
+    {
+        $query->where('created_at', '<=', today()->subDays(7));
+    }    
+
+    /**
+     * Scope a query to only include invoices which no
+     * reminder has been sent
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeReminderNotSent($query)
+    {
+        $query->whereNull('reminder_sent_at');
+    }       
+
+    /**
+     * Scope a query to only include invoices which
+     * today is a week from or more than the reminder
+     * sent date
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeReminderSentOverAWeekAgo($query)
+    {
+        $query->where('reminder_sent_at', '<=', today()->subDays(7));
+    }      
 }
 
 

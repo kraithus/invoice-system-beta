@@ -14,11 +14,18 @@ class InvoiceSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
+        
+        /**
+         * Dates were dependent on Today(October 15th) + 7
+         * Should prolly have a formula for the dates like Today + 7 days. Blah
+         */
         Invoice::factory()->create([
             'quotation_id' => 1,
             'payment_status' => 0,
             'inv_number' => 'INV001',
+            'created_at' => '2022-10-06 14:14:45',
+            'updated_at' => '2022-10-06 14:14:45',
             'reminder_sent_at' => '2022-10-13 14:15:02'
         ])
         ->create([
@@ -29,8 +36,17 @@ class InvoiceSeeder extends Seeder
         ->create([
             'quotation_id' => 3,
             'payment_status' => 0,
-            'inv_number' => 'INV002',
-            'reminder_sent_at' => '2022-10-06-14:15:02'
-        ]);           
+            'inv_number' => 'INV003',
+            'created_at' => '2022-09-30 13:14:45',
+            'updated_at' => '2022-09-30 13:14:45',
+            'reminder_sent_at' => '2022-10-06 14:15:02'
+        ])
+        ->create([
+            'quotation_id' => 4,
+            'payment_status' => 0,
+            'inv_number' => 'INV004',
+            'created_at' => '2022-10-07 15:00',
+            'updated_at' => '2022-10-07 15:00'
+        ]);              
     }
 }

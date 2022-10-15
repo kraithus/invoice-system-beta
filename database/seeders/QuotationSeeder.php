@@ -40,6 +40,7 @@ class QuotationSeeder extends Seeder
         'job_id' => 4,
         'price' => 80000,
         'qtn_number' => 'QTN004',
+        'invoice_status' => 1,
         'created_at' => '2022-09-16 14:16:02'
     ])
     ->create([

@@ -19,7 +19,7 @@ class InvoiceReminderWeekly
         /**
          * Get outstanding invoices
          */
-        $outstandingInvoices = Invoice::outstanding()->where('created_at', '>=', today()->subDays(7))->get();
+        $outstandingInvoices = Invoice::outstanding()->createdOverAWeekAgo()->reminderNotSent()->orWhere->reminderSentOverAWeekAgo()->get();
 
         /**
          * Get job details
@@ -30,7 +30,5 @@ class InvoiceReminderWeekly
             $customerEmail = $invoice->quotation->job->customer->email;
             Mail::to($customerEmail)->send(new WeeklyInvoiceReminder());
         }
-
-        //echo 'Hi';
     }
 }
