@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
             DistrictSeeder::class,
             CustomerSeeder::class,
             JobSeeder::class,
-            QuotationSeeder::class
+            QuotationSeeder::class,
+            InvoiceSeeder::class,
         ]);
     }
 }

@@ -20,7 +20,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             InvoiceReminderWeeklyFacade::sendReminderMail();
-        })->dailyAt('22:19'); 
+        })->dailyAt('10:00'); 
     }
 
     /**

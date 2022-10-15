@@ -17,7 +17,7 @@ class InvoiceReminderWeekly
     public function sendReminderMail()
     {   
         /**
-         * Get outstanding invoices 1 week overdue
+         * Get outstanding invoices
          */
         $outstandingInvoices = Invoice::outstanding()->where('created_at', '>=', today()->subDays(7))->get();
 
