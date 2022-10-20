@@ -27,20 +27,11 @@
 					<ul class="side_nav list-unstyled flex-column px-3 pt-2 pb-4">
 						<li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="/cpanel"><span class="la la-home"></span> Home</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="notification/create"><span class="la la-bullhorn"></span> Send Notification</a></li>
-						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/jobs-done"><span class="la la-briefcase"></span> View Jobs</a></li>
+						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/jobs-done"><span class="la la-briefcase"></span> Jobs</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/invoice"><span class="la la-file-invoice"></span> Invoices</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/export-data"><span class="la la-database"></span> Export Data</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/register"><span class="la la-address-book"></span> Register Technician</a></li>
-						<li class="dropdown">
-						<a class="dropdown-toggle text-decoration-none px-3 py-2 d-block" href="#" id="sidebarDropdownMenuLink" role="button" data-toggle="dropdown"
-							aria-haspopup="true" aria-expanded="false"><span class="la la-chart-line"></span> Reports</a>
-						<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left"
-							aria-labelledby="sidebarDropdownMenuLink">
-							<a class="dropdown-item text-decoration-none px-3 py-2 d-block" href="/outstanding-invoices">Outstanding Invoices</a>
-							<a class="dropdown-item text-decoration-none px-3 py-2 d-block" href="/paid-invoices">Paid Invoices</a>
-							<a class="dropdown-item text-decoration-none px-3 py-2 d-block" href="/quotations-pending-escalation">Quotations Pending Escalation</a>
-						</div>
-					</li>
+						<x-admin.reports-dropdown />	
 					</ul>
 				</div>
 			</nav>

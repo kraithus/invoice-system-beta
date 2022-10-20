@@ -58,7 +58,7 @@
 					<ul class="side_nav list-unstyled flex-column px-3 pt-2 pb-4">
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/cpanel"><span class="la la-home"></span> Home</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/notification/create"><span class="la la-bullhorn"></span> Send Notification</a></li>
-						<li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="/jobs-done"><span class="la la-briefcase"></span> View Jobs</a></li>
+						<li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="/jobs-done"><span class="la la-briefcase"></span> Jobs</a></li>
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/invoice"><span class="la la-file-invoice"></span> Invoices</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/export-data"><span class="la la-database"></span> Export Data</a></li>
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/register"><span class="la la-address-book"></span> Register Technician</a></li>

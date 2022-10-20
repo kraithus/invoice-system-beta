@@ -17,13 +17,13 @@ class JobSeeder extends Seeder
     {
         Job::factory()->create([
                 'name' => 'Server Maintenance',
-                'customer_id' => 2,
+                'customer_id' => 1,
                 'technician_id' => 2,
                 'created_at' => '2022-09-15 14:15:02'
                 ])
             ->create([
-                'name' => 'Server Maintenance',
-                'customer_id' => 3,
+                'name' => 'Server RAM Upgrade',
+                'customer_id' => 2,
                 'technician_id' => 2,
                 'created_at' => '2022-09-15 14:15:02'
                 ])
@@ -34,8 +34,8 @@ class JobSeeder extends Seeder
                 'created_at' => '2022-09-15 14:15:02'
                 ])
             ->create([
-                'name' => 'Server Maintenance',
-                'customer_id' => 2,
+                'name' => 'Database Restructuring',
+                'customer_id' => 4,
                 'technician_id' => 2,
                 'created_at' => '2022-09-16 14:16:02'
                 ])

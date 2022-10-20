@@ -39,13 +39,26 @@ class Invoice extends Model
      * Scope a query to update the specified invoice's
      * payment status
      * 
-     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeUpdatePaymentStatus($query)
     {
        return $query->update(['payment_status' => 1]);
     }    
+
+    /**
+     * Scope a query to update the specified invoice's
+     * reminder time
+     * 
+     * @param \Illuminate\Database\Eloquent\Builder  $query
+     * @param int  $id
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeUpdateReminderTime($query, $id)
+    {
+       return $query->where('id', $id)->update(['reminder_sent_at' => date("Y-m-d H:i:s")]);
+    }      
 
     /**
      * Scope a query to only include outstanding invoices.
