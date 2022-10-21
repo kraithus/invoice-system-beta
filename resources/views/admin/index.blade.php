@@ -67,7 +67,7 @@
 										<span class="la la-group mr-4 over_customer" alt="..."></span>
 										<div class="media-body">
 											<h4 class="mt-0">New Jobs</h4>
-											<h5><a href=""><span class="la la-arrow-right"></span> replacing the graph</a></h5>
+											<h5><a href=""><span class="la la-arrow-right"></span> {{ $jobCount }}</a></h5>
 										</div>
 									</div>
 								</div>
@@ -76,7 +76,7 @@
 										<span class="la la-group mr-4 over_customer" alt="..."></span>
 										<div class="media-body">
 											<h4 class="mt-0">Jobs Done</h4>
-											<h5><a href=""><span class="la la-arrow-right"></span> {{ $jobCount }}</a></h5>
+											<h5><a href=""><span class="la la-arrow-right"></span> {{ $jobsDone }}</a></h5>
 										</div>
 									</div>
 								</div>

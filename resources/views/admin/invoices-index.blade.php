@@ -62,6 +62,7 @@
                         <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="/invoice"><span class="la la-file-invoice"></span> Invoices</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/export-data"><span class="la la-database"></span> Export Data</a></li>
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/register"><span class="la la-address-book"></span> Register Technician</a></li>
+                        <x-admin.reports-dropdown />
 					</ul>
 				</div>
 			</nav>

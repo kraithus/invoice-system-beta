@@ -62,6 +62,7 @@
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/invoice"><span class="la la-file-invoice"></span> Invoices</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/export-data"><span class="la la-database"></span> Export Data</a></li>
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/register"><span class="la la-address-book"></span> Register Technician</a></li>
+                        <x-admin.reports-dropdown />
 					</ul>
 				</div>
 			</nav>
@@ -88,7 +89,7 @@
 					@endif
                     <div class="col-md-12">
 							<div class="box">
-                                <h4 class="block-title">Quotations <span class="la la-th-list"></span></h4>
+                                <h4 class="block-title">Jobs <span class="la la-th-list"></span></h4>
                                 <div class="title-border"></div>
                                 <div class="table-reponsive">
                                     <table id="jobTable" class="table table-striped" aria-labelledby="">
@@ -96,11 +97,11 @@
                                             <tr>
                                                 <th>Qotation #</td>
                                                 <th>Job</th>
-                                                <th>Customer Name</th>
+                                                <th>Customer</th>
+                                                <th>Technician</th>
                                                 <th>Price</th>
                                                 <th>Date</th>
                                                 <th>Email Quotation</th>
-                                                <th>Invoice</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -109,25 +110,13 @@
                                             <td>{{ $job->quotation->qtn_number }}</td>
                                             <td>{{ $job->name }}</td>
                                             <td>{{ $job->customer->name }}</td>
+                                            <td>{{ $job->technician->name }}</td>
                                             <td>{{ $job->quotation->price }}</td>
                                             <td>{{ $job->created_at }}</td>
                                             <td>
                                             <a href="{{ route('email-quotation', $job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
                                             <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
                                             </td>
-                                            @if ($job->quotation->invoice_status == 0)
-                                            <td>
-                                                <form action="/invoice" method="POST">
-                                                    @csrf 
-                                                    <input type="hidden" name="quotation_id" value="{{ $job->quotation->id }}">
-                                                    <button type="submit" class="all_btn_quote">Generate Invoice</button>
-                                                </form>    
-                                            </td>
-                                            @elseif ($job->quotation->invoice_status == 1)
-                                            <td>
-                                                    <a href="{{ route('resend-invoice', $job->id) }}"><button type="submit" class="all_btn_quote">Resend Invoice</button></a>   
-                                            </td>
-                                            @endif
                                         </tr>    
                                         @endforeach     
                                         </tbody>

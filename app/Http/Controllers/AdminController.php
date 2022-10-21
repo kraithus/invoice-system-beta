@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Charts\WeeklyJobs;
 use App\Charts\WeeklyRevenue;
+use App\Models\Invoice;
 use App\Models\Job;
 use App\Models\Quotation;
+use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +20,12 @@ class AdminController extends Controller
         /**
          * Query the data
          */
-        $todayJobs = Job::where('created_at', '>=', today())->count();
+
+        // Jobs created today, less tomorrow
+        $todayJobs = Job::where('created_at', '>=', today())->where('created_at', '<', today()->addDays(1))->count();
+
+        // Invoices generated that day is equivalent to jobs doen that day
+        $jobsDone = Invoice::where('created_at', '>=', today())->where('created_at', '<', today()->addDays(1))->count();
         $yesterdayJobs = Job::where('created_at', '>=', today()->subDays(1))->where('created_at', '<', today())->count();
         $jobs2DaysAgo = Job::where('created_at', '>=', today()->subDays(2))->where('created_at', '<', today()->subDays(1))->count();
 
@@ -44,6 +51,7 @@ class AdminController extends Controller
             'chart' => $chart,
             'priceSum' => $sumQuotationPrices,
             'jobCount' => $todayJobs,
+            'jobsDone' => $jobsDone,
         ];
 
         return view('admin.index', $data);

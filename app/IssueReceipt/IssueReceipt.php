@@ -34,7 +34,7 @@ class IssueReceipt
         ];
 
         $pdfContents = Pdf::loadView('pdfs.receipt', $data)->output(); //Convert to string
-        $pdfName = $data['customerName'] . '-' . $data['receiptNum'] . '.pdf';
+        $pdfName = 'Receipt_' . $data['customerName'] . '-' . $data['receiptNum'] . '.pdf';
         Storage::disk('local')->put('/public/' . $pdfName, $pdfContents); // Write to disk
 
         $jobName = $job->name;

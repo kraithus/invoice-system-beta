@@ -88,7 +88,7 @@
 					@endif
                     <div class="col-md-12">
 							<div class="box">
-                                <h4 class="block-title">Quotations <span class="la la-th-list"></span></h4>
+                                <h4 class="block-title">Paid Invoices <span class="la la-th-list"></span></h4>
                                 <div class="title-border"></div>
                                 <div class="table-reponsive">
                                     <table id="jobTable" class="table table-striped" aria-labelledby="">

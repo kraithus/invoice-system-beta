@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Models\Invoice;
 use App\Models\Quotation;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller

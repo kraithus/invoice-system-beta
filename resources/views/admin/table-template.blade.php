@@ -59,8 +59,9 @@
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="notification/create"><span class="la la-bullhorn"></span> Send Notification</a></li>
 						<li class=""><a class="text-decoration-none px-3 py-2 d-block" href="jobs-done"><span class="la la-briefcase"></span> Jobs</a></li>
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/invoice"><span class="la la-file-invoice"></span> Invoices</a></li>
-                        <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="export-data"><span class="la la-database"></span> Export Data</a></li>
+                        <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="export-data"><span class="la la-database"></span> Export Data</a></li>
                         <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="/register"><span class="la la-address-book"></span> Register Technician</a></li>
+                        <x-admin.reports-dropdown />
 					</ul>
 				</div>
 			</nav>
@@ -87,16 +88,16 @@
 					@endif
                     <div class="col-md-12">
 							<div class="box">
-                                <h4 class="block-title">Quotations <span class="la la-th-list"></span></h4>
+                                <h4 class="block-title">{{ $title }}<span class="la la-th-list"></span></h4>
                                 <div class="title-border"></div>
                                 <div class="table-reponsive">
                                     <table id="jobTable" class="table table-striped" aria-labelledby="">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>Job</th>
-                                                <th>Customer Name</th>
+                                                <th>Customer</th>
+                                                <th>Technician</th>
                                                 <th>Price</th>
-                                                <th>Email Quotation</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -104,11 +105,8 @@
                                         <tr>
                                             <td>{{ $job->name }}</td>
                                             <td>{{ $job->customer->name }}</td>
+                                            <td>{{ $job->technician->name }}</td>
                                             <td>{{ $job->quotation->price }}</td>
-                                            <td>
-                                            <a href="{{ route('email-quotation', $job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
-                                            <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
-                                            </td>
                                         </tr>    
                                         @endforeach     
                                         </tbody>

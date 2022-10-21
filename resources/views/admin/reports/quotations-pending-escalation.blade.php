@@ -33,7 +33,6 @@
                 {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1 , 2 ]
                     }
                 }
             ]
@@ -88,17 +87,18 @@
 					@endif
                     <div class="col-md-12">
 							<div class="box">
-                                <h4 class="block-title">Quotations <span class="la la-th-list"></span></h4>
+                                <h4 class="block-title">Quotations Pending Escalation<span class="la la-th-list"></span></h4>
                                 <div class="title-border"></div>
                                 <div class="table-reponsive">
-                                <table id="customerTable" class="table table-striped" aria-labelledby="">
+                                <table id="jobTable" class="table table-striped" aria-labelledby="">
                                         <thead class="thead-dark">
                                             <tr>
                                                 <th>Quotation #</th>
                                                 <th>Job</th>
-                                                <th>Customer Name</th>
+                                                <th>Customer</th>
+                                                <th>Technician</th>
                                                 <th>Price</th>
-                                                <th>Email Quotation</th>
+                                                <th>Generate Invoice</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -107,11 +107,21 @@
                                             <td>{{ $quotation->qtn_number }}
                                             <td>{{ $quotation->job->name }}</td>
                                             <td>{{ $quotation->job->customer->name }}</td>
+                                            <td>{{ $quotation->job->technician->name }}</td>
                                             <td>{{ $quotation->price }}</td>
+                                            @if ($quotation->invoice_status == 0)
                                             <td>
-                                            <a href="{{ route('email-quotation', $quotation->job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
-                                            <a href="{{ route('quotation-pdf', $quotation->job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
+                                                <form action="/invoice" method="POST">
+                                                    @csrf 
+                                                    <input type="hidden" name="quotation_id" value="{{ $quotation->id }}">
+                                                    <button type="submit" class="all_btn_quote">Generate Invoice</button>
+                                                </form>    
                                             </td>
+                                            @elseif ($job->quotation->invoice_status == 1)
+                                            <td>
+                                                    <a href="{{ route('resend-invoice', $job->id) }}"><button type="submit" class="all_btn_quote">Resend Invoice</button></a>   
+                                            </td>
+                                            @endif
                                         </tr>    
                                         @endforeach     
                                         </tbody>
