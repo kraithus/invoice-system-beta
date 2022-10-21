@@ -64,7 +64,7 @@
 							<div class="row">
 								<div class="col-md-4 mb-5">
 									<div class="media">
-										<span class="la la-group mr-4 over_customer" alt="..."></span>
+										<span class="la la-briefcase mr-4 over_customer" alt="..."></span>
 										<div class="media-body">
 											<h4 class="mt-0">New Jobs</h4>
 											<h5><a href=""><span class="la la-arrow-right"></span> {{ $jobCount }}</a></h5>
@@ -73,7 +73,7 @@
 								</div>
 								<div class="col-md-4 mb-5">
 									<div class="media">
-										<span class="la la-group mr-4 over_customer" alt="..."></span>
+										<span class="la la-check-square mr-4 over_customer" alt="..."></span>
 										<div class="media-body">
 											<h4 class="mt-0">Jobs Done</h4>
 											<h5><a href=""><span class="la la-arrow-right"></span> {{ $jobsDone }}</a></h5>
@@ -82,7 +82,7 @@
 								</div>
 								<div class="col-md-4 mb-5">
 									<div class="media">
-										<span class="la la-group mr-4 over_customer" alt="..."></span>
+										<span class="la la-wallet mr-4 over_customer" alt="..."></span>
 										<div class="media-body">
 											<h4 class="mt-0">Sum of Quotations</h4>
 											<h5><a href=""><span class="la la-arrow-right"></span> MWK {{ number_format($priceSum) }}</a></h5>
