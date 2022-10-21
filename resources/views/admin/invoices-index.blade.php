@@ -119,7 +119,7 @@
                                                 @endif
                                             </td>
                                             <td>{{ $invoice->created_at }}</td>
-                                            <td><a href="{{ route('invoice.edit', $invoice->id) }}">Update</a></td>
+                                            <td><a href="{{ route('invoice.edit', $invoice->id) }}"><button class="all_btn_quote">Update</button></a></td>
                                         </tr>
                                         @endforeach     
                                         </tbody>
