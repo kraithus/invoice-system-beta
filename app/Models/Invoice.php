@@ -84,14 +84,14 @@ class Invoice extends Model
 
     /**
      * Scope a query to only include invoices which
-     * were created a exactly a week ago or more than a week ago
+     * were created a exactly 30 days ago or more
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return void
      */
     public function scopeCreatedOverAWeekAgo($query)
     {
-        $query->where('created_at', '<=', today()->subDays(7));
+        $query->where('created_at', '<=', today()->subDays(30));
     }    
 
     /**
@@ -108,7 +108,7 @@ class Invoice extends Model
 
     /**
      * Scope a query to only include invoices which
-     * today is a week from or more than the reminder
+     * today is >= 30 days from the reminder
      * sent date
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
@@ -116,7 +116,7 @@ class Invoice extends Model
      */
     public function scopeReminderSentOverAWeekAgo($query)
     {
-        $query->where('reminder_sent_at', '<=', today()->subDays(7));
+        $query->where('reminder_sent_at', '<=', today()->subDays(30));
     }      
 }
 

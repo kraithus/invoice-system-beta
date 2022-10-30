@@ -33,7 +33,7 @@
                 {
                     extend: 'excelHtml5',
                     exportOptions: {
-                        columns: [ 0, 1 , 2 ]
+                        columns: [ 0, 1 , 2, 3 ]
                     }
                 }
             ]
