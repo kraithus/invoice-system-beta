@@ -101,7 +101,7 @@
                                                 <th>Technician</th>
                                                 <th>Price</th>
                                                 <th>Date</th>
-                                                <th>Email Quotation</th>
+                                                <th>Quotation</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -114,7 +114,6 @@
                                             <td>{{ $job->quotation->price }}</td>
                                             <td>{{ $job->created_at }}</td>
                                             <td>
-                                            <a href="{{ route('email-quotation', $job->id) }}"><button class="all_btn_quote">Send Email <span class="la la-envelope-o"></span></button></a>
                                             <a href="{{ route('quotation-pdf', $job->id) }}" target="_blank"><button class="all_btn_quote">View PDF <span class="la la-eye"></span></button></a>
                                             </td>
                                         </tr>    
