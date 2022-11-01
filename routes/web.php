@@ -12,6 +12,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\QuotationIssuedController;
 use App\Http\Controllers\ReceiptController;
+use App\Http\Controllers\ReceiptIssueController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
@@ -92,6 +93,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
                 Route::get('resend-invoice/{id}', 'resendInvoice')->name('resend-invoice');
             });
 
+            Route::controller(ReceiptIssueController::class)->group(function () {                
+                Route::get('receipt-pdf/{id}', 'viewPDF')->name('receipt-pdf');
+            });
+        
             Route::controller(AdminController::class)->group(function () {
                 Route::get('cpanel', 'index')->name('cpanel');
 

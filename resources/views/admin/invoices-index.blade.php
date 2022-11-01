@@ -101,7 +101,7 @@
                                                 <th>Price</th>
                                                 <th>Status</th>
                                                 <th>Date</th>
-                                                <th>Update</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -119,7 +119,13 @@
                                                 @endif
                                             </td>
                                             <td>{{ $invoice->created_at }}</td>
-                                            <td><a href="{{ route('invoice.edit', $invoice->id) }}"><button class="all_btn_quote">Update</button></a></td>
+                                            <td>
+                                                @if ($invoice->payment_status == 0)
+                                                <a href="{{ route('invoice.edit', $invoice->id) }}"><button class="all_btn_quote">Update</button></a>
+                                                @else
+                                                <a href="{{ route('receipt-pdf', $invoice->quotation->job->id) }}" target="_blank"><button class="all_btn_quote">View Receipt</button></a>
+                                                @endif
+                                            </td>
                                         </tr>
                                         @endforeach     
                                         </tbody>

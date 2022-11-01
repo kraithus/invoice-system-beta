@@ -64,4 +64,30 @@ class IssueReceipt
 
         Mail::to($customerEmail)->send(new Receipt($jobName, $customerName, $jobPrice, $pdfName));
     }
+
+    public function viewReceiptPDF($id)
+    {
+        // Catch the job ID
+        $jobID = $id;
+
+        // Get job ID
+        $job = Job::find($jobID);
+
+        // Push job details to array
+        $data = [
+            'jobName' => $job->name,
+            'customerEmail' => $job->customer->email,
+            'customerName' => $job->customer->name,
+            'customerPhone' => $job->customer->phone,
+            'customerOrganisation' => $job->customer->organisation,
+            'customerAddress' => $job->customer->address_1,
+            'customerDistrict' => $job->customer->district->name,
+            'jobPrice' => $job->quotation->price,
+            'receiptNum' => $job->quotation->invoice->receipt->id,
+            'jobDate' => $job->created_at
+        ];
+
+        $pdf = Pdf::loadView('pdfs.receipt', $data);
+        return $pdf->stream();
+    }    
 }
